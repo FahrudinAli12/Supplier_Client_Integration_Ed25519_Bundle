@@ -32,6 +32,7 @@ _backup_*/
 *.bak
 *.tmp
 *.log
+*.zip
 .DS_Store
 Thumbs.db
 

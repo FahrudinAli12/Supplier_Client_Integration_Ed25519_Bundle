@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+
+
+<html lang="id">
+
+
+
+
+
+<head>
+
+
+  <meta charset="UTF-8" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <title>Settings - Client Checking & Laundry Linen RS</title>
+
+
+  <link rel="stylesheet" href="/static/styles.css?v=80" />
+  <style>
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-secondary {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+    }
+
+    .badge-info {
+      background: #0c4a6e;
+      color: #38bdf8;
+      border: 1px solid #0284c7;
+    }
+
+    .badge-success {
+      background: #064e3b;
+      color: #34d399;
+      border: 1px solid #059669;
+    }
+
+    .badge-warning {
+      background: #78350f;
+      color: #fbbf24;
+      border: 1px solid #d97706;
+    }
+
+    .badge-danger {
+      background: #7f1d1d;
+      color: #f87171;
+      border: 1px solid #dc2626;
+    }
+
+    .badge-primary {
+      background: #1e3a8a;
+      color: #93c5fd;
+      border: 1px solid #2563eb;
+    }
+
+    .alert-banner {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .alert-gate-locked {
+      background: #3b1d1d;
+      border: 1px solid #dc2626;
+      color: #fca5a5;
+    }
+
+    .alert-gate-active {
+      background: #064e3b;
+      border: 1px solid #059669;
+      color: #a7f3d0;
+    }
+
+    .alert-warning {
+      background: #451a03;
+      border: 1px solid #d97706;
+      color: #fde68a;
+    }
+
+    .epc-list {
+      max-height: 200px;
+      overflow-y: auto;
+      background: #05101d;
+      border: 1px solid #142840;
+      border-radius: 8px;
+      padding: 8px;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+
+    .table-history {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    .table-history th,
+    .table-history td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #173554;
+    }
+
+    .table-history th {
+      color: #8297b0;
+      font-weight: 600;
+    }
+  </style>
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+  <div class="app-layout">
+
+
+
+
+
+    <!-- SIDEBAR GLOBAL -->
+
+
+    <aside class="sidebar" id="sidebar">
+
+
+      <div class="sidebar-brand">
+
+
+        <div class="brand-icon-box">
+
+
+          <svg class="brand-cross" viewBox="0 0 24 24" fill="currentColor">
+
+
+            <path
+              d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
+
+
+          </svg>
+
+
+        </div>
+
+
+        <div class="brand-text">
+
+
+          <strong>Client Checking</strong>
+
+
+          <small>HOSPITAL LINEN SYSTEM</small>
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+      <div class="sidebar-menu-label">MENU</div>
+
+
+      <nav class="sidebar-nav">
+
+
+        <a href="/dashboard" class="nav-item">
+
+
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+            <rect x="3" y="3" width="7" height="7"></rect>
+
+
+            <rect x="14" y="3" width="7" height="7"></rect>
+
+
+            <rect x="14" y="14" width="7" height="7"></rect>
+
+
+            <rect x="3" y="14" width="7" height="7"></rect>
+
+
+          </svg>
+
+
+          <span>Dashboard</span>
+
+
+        </a>
+
+
+
+
+
+        <div class="nav-group">
+
+
+          <div class="nav-item">
+
+
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+
+
+              <polyline points="14 2 14 8 20 8"></polyline>
+
+
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+
+
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+
+
+            </svg>
+
+
+            <span>Master Data</span>
+
+
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <polyline points="6 9 12 15 18 9"></polyline>
+
+
+            </svg>
+
+
+          </div>
+
+
+          <div class="nav-sub">
+
+
+            <a href="/master-data/linen" class="sub-item">• Data Linen</a>
+
+
+            <a href="/master-data/ruangan" class="sub-item">• Data Ruangan</a>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="nav-group">
+
+
+          <a href="/laundry" class="nav-item">
+
+
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+
+
+              </path>
+
+
+            </svg>
+
+
+            <span>Laundry</span>
+
+
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <polyline points="6 9 12 15 18 9"></polyline>
+
+
+            </svg>
+
+
+          </a>
+
+
+          <div class="nav-sub">
+
+
+            <a href="/laundry?tab=masuk" class="sub-item" id="sub-nav-masuk">• Linen Masuk</a>
+
+
+            <a href="/laundry?tab=keluar" class="sub-item" id="sub-nav-keluar">• Linen Keluar</a>
+
+
+            <a href="/laundry?tab=history" class="sub-item" id="sub-nav-history">• History Linen</a>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="nav-group open">
+
+
+          <a href="/settings" class="nav-item active">
+
+
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <circle cx="12" cy="12" r="3"></circle>
+
+
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+
+
+              </path>
+
+
+            </svg>
+
+
+            <span>Settings</span>
+
+
+            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <polyline points="6 9 12 15 18 9"></polyline>
+
+
+            </svg>
+
+
+          </a>
+
+
+          <div class="nav-sub">
+
+
+            <a href="/settings?tab=sync" class="sub-item" id="sub-nav-sync">• Sync Data</a>
+
+
+            <a href="/settings?tab=log" class="sub-item" id="sub-nav-log">• Log Penerimaan Linen</a>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+
+      </nav>
+
+
+
+
+
+      <!-- SIDEBAR READER WIDGET -->
+
+
+      <div class="sidebar-reader-box">
+
+
+        <div class="sidebar-reader-title">Reader Status</div>
+
+
+        <div class="sidebar-reader-status">
+
+
+          <span id="rfid-status-badge" class="badge-disconnected">
+
+
+            <span class="led-dot"></span>DISCONNECTED
+
+
+          </span>
+
+
+        </div>
+
+
+        <div class="sidebar-reader-info">
+
+
+          <div class="info-row"><span>Mode</span><strong id="sidebar-mode-name">Single Reader Mode</strong></div>
+          <div class="info-row"><span>Active Scanner</span><strong id="sidebar-active-scanner"
+              style="color: #00D084;">COM3 - Linen Masuk</strong></div>
+          <div class="info-row"><span>Port</span><strong id="sidebar-port-name">COM3</strong></div>
+
+
+          <div class="info-row"><span>Last Sync</span><strong id="sidebar-last-sync">01/06/2026 20:38:21</strong></div>
+
+
+        </div>
+
+
+        <button type="button" class="btn-test-connection" id="btn-test-connection">
+
+
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+
+
+            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+
+
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+
+
+            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+
+
+          </svg>
+
+
+          Test Connection
+
+
+        </button>
+
+
+      </div>
+
+
+    </aside>
+
+
+
+
+
+    <!-- MAIN AREA -->
+
+
+    <div class="main-wrapper">
+
+
+      <!-- HEADER GLOBAL -->
+
+
+      <header class="top-header">
+
+
+        <div class="header-left">
+
+
+          <button type="button" class="btn-hamburger" id="btn-sidebar-toggle" title="Toggle Sidebar">
+
+
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+
+
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+
+
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+
+
+            </svg>
+
+
+          </button>
+
+
+          <div class="header-title-box">
+
+
+            <h1 class="header-title" id="setting-header-title">Settings</h1>
+
+
+            <p class="header-subtitle" id="setting-header-subtitle">Pengaturan dan sinkronisasi data linen</p>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="header-right">
+
+
+          <div class="port-reader-box">
+
+
+            <label for="rfid-port-select">Port Reader :</label>
+
+
+            <div class="custom-dropdown port-dropdown" id="dropdown-port" tabindex="0">
+
+
+              <div class="dropdown-selected">COM3</div>
+
+
+              <div class="dropdown-options" id="dropdown-port-options">
+
+
+                <div class="dropdown-option selected" data-value="COM3">COM3</div>
+
+
+              </div>
+
+
+            </div>
+
+
+            <input type="hidden" id="rfid-port-select" value="COM3" />
+
+
+          </div>
+
+
+
+
+
+          <div class="header-status-badge">
+
+
+            <span class="badge-disconnected"><span class="led-dot"></span>DISCONNECTED</span>
+
+
+          </div>
+
+
+
+
+
+          <button type="button" class="header-icon-btn" title="Notifikasi">
+
+
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+
+
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+
+
+            </svg>
+
+
+            <span class="notification-dot" style="display: none;">0</span>
+
+
+          </button>
+
+
+
+
+
+          <div class="user-avatar" title="Administrator">A</div>
+
+
+        </div>
+
+
+      </header>
+
+
+
+
+
+      <!-- PAGE CONTENT -->
+
+
+      <main class="page-content">
+
+
+
+
+
+        <!-- Sub-nav Pills / Tabs Bar (Hidden to match mockup, used for programmatic switching) -->
+        <div class="pills-nav-bar" style="margin-bottom: 24px; display: none; gap: 8px;">
+          <button type="button" class="pill-btn setting-tab-btn active" data-target="setting-tab-sync">Penerimaan & Sync Paket</button>
+          <button type="button" class="pill-btn setting-tab-btn" data-target="setting-tab-log">Log Penerimaan Linen</button>
+        </div>
+
+        <!-- ================= SECTION A: SYNC & PENERIMAAN PAKET ================= -->
+        <div class="setting-tab-content" id="setting-tab-sync">
+
+          <style>
+            .sync-form-input {
+              width: 100% !important;
+              background-color: var(--bg-input, #061426) !important;
+              color: var(--text-main, #e6f0fa) !important;
+              border: 1px solid var(--border-color, #173554) !important;
+              border-radius: 8px !important;
+              padding: 10px 14px !important;
+              font-weight: 500 !important;
+              font-size: 0.92rem !important;
+              outline: none !important;
+              box-sizing: border-box !important;
+              transition: all 0.2s ease !important;
+            }
+            .sync-form-input:focus {
+              border-color: var(--accent-cyan, #00D4FF) !important;
+              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2) !important;
+            }
+            .sync-form-input::placeholder {
+              color: var(--text-sub, #4f6682) !important;
+            }
+            .sync-form-select {
+              width: 100% !important;
+              background-color: var(--bg-input, #061426) !important;
+              color: var(--text-main, #e6f0fa) !important;
+              border: 1px solid var(--border-color, #173554) !important;
+              border-radius: 8px !important;
+              padding: 10px 14px !important;
+              font-weight: 500 !important;
+              font-size: 0.92rem !important;
+              outline: none !important;
+              cursor: pointer !important;
+              box-sizing: border-box !important;
+              transition: all 0.2s ease !important;
+            }
+            .sync-form-select:focus {
+              border-color: var(--accent-cyan, #00D4FF) !important;
+              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2) !important;
+            }
+            .sync-form-select option {
+              background-color: #0b2038 !important;
+              color: #e6f0fa !important;
+            }
+          </style>
+
+          <!-- HERO BANNER SINKRONISASI DATA -->
+          <section class="hero-banner mb-6" style="margin-bottom: 20px;">
+            <div class="hero-content">
+              <div class="hero-eyebrow">SETTINGS / SINKRONISASI DATA</div>
+              <h1 class="hero-title">Sinkronisasi <span>Data Linen</span></h1>
+              <p class="hero-desc">Penerimaan paket linen baru dan verifikasi fisik tag RFID dari supplier.</p>
+            </div>
+            <div class="hero-img-box" style="background-image: url('/static/images/banner_sync.png');"></div>
+          </section>
+
+          <!-- 1. TOP STATS CARDS -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <!-- Card 1: Total Linen Terdaftar -->
+            <div class="card" style="display: flex; align-items: center; gap: 20px; padding: 20px 24px; margin-bottom: 0;">
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(5, 150, 105, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div>
+                <div style="color: #94a3b8; font-size: 0.85rem; font-weight: 500;">Total Linen Terdaftar</div>
+                <div id="stat-total-terdaftar" style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.1; margin: 2px 0;">0</div>
+                <div style="color: #64748b; font-size: 0.8rem;">Data</div>
+              </div>
+            </div>
+
+            <!-- Card 2: Total Linen Tidak Terdaftar -->
+            <div class="card" style="display: flex; align-items: center; gap: 20px; padding: 20px 24px; margin-bottom: 0;">
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(185, 28, 28, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+              <div>
+                <div style="color: #94a3b8; font-size: 0.85rem; font-weight: 500;">Total Linen Tidak Terdaftar</div>
+                <div id="stat-total-tidak-terdaftar" style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.1; margin: 2px 0;">0</div>
+                <div style="color: #64748b; font-size: 0.8rem;">Data</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MIDDLE ROW: SCAN LINEN & CEK LINEN -->
+          <div style="display: grid; grid-template-columns: 290px 1fr; gap: 20px; margin-bottom: 20px;">
+            <!-- Left: Scan Linen -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 22px; margin-bottom: 0;">
+              <h3 style="color: #fff; font-size: 1.05rem; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                Scan Linen
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto; margin-bottom: auto;">
+                <button id="btn-start-scan" type="button" class="btn" onclick="toggleScan()"
+                  style="background: #00bcd4; color: #ffffff; font-weight: 700; padding: 13px; border-radius: 8px; border: none; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 188, 212, 0.35); transition: all 0.2s ease;">
+                  <span id="btn-scan-icon">▶</span> <span id="btn-scan-text">Start Scan</span>
+                </button>
+
+                <button id="btn-reset-table" type="button" class="btn" onclick="resetScanTables()"
+                  style="background: #112338; color: #cbd5e1; font-weight: 600; padding: 12px; border-radius: 8px; border: 1px solid #1e3a5f; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease;">
+                  Reset Tabel
+                </button>
+
+                <button id="btn-simpan-data" type="button" class="btn" onclick="processPackageReceiving()"
+                  style="background: #00bcd4; color: #ffffff; font-weight: 700; padding: 13px; border-radius: 8px; border: none; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 188, 212, 0.35); transition: all 0.2s ease;">
+                  Simpan Data
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Cek Linen -->
+            <div class="card" style="padding: 22px; margin-bottom: 0;">
+              <h3 style="color: #fff; font-size: 1.05rem; font-weight: 700; margin-bottom: 16px;">Cek Linen</h3>
+              <div class="table-wrap" style="max-height: 250px; overflow-y: auto;">
+                <table class="table-history" style="margin: 0;">
+                  <thead>
+                    <tr>
+                      <th style="width: 60px;">NO</th>
+                      <th>EPC</th>
+                      <th style="width: 140px; text-align: center;">ADA/TIDAK</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-cek-linen">
+                    <tr>
+                      <td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data scan.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. BOTTOM ROW: VERIFIKASI LINEN, LINEN TERDAFTAR, LINEN TIDAK TERDAFTAR -->
+          <div style="display: grid; grid-template-columns: 290px 1.4fr 1.2fr; gap: 20px; margin-bottom: 24px;">
+            <!-- Left: Verifikasi Linen -->
+            <div class="card" style="display: flex; flex-direction: column; padding: 22px; margin-bottom: 0;">
+              <h3 style="color: #fff; font-size: 1.05rem; font-weight: 700; margin-bottom: 16px;">Verifikasi Linen</h3>
+
+              <input type="hidden" id="input-paket-id" />
+
+              <div style="margin-bottom: 14px;">
+                <label style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px;">Kode Verifikasi</label>
+                <input type="text" id="input-verif-code" class="sync-form-input" placeholder="PKG-720728"
+                  style="font-family: monospace; font-weight: 600;"
+                  onkeydown="if(event.key==='Enter'){event.preventDefault();fetchPackageByVerificationCode();}" />
+              </div>
+
+              <div style="margin-bottom: 14px;">
+                <label style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px;">Nama Petugas</label>
+                <input type="text" id="input-nama-petugas" class="sync-form-input" placeholder="Bagus" value="Bagus" />
+              </div>
+
+              <div style="margin-bottom: 18px;">
+                <label style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span>Ruang Tujuan</span>
+                  <span style="color: #00D4FF; font-size: 0.75rem;">(Master Aktif)</span>
+                </label>
+                <select id="select-ruangan-tujuan" class="sync-form-select">
+                  <option value="" disabled selected>Memuat master ruangan...</option>
+                </select>
+              </div>
+
+              <button id="btn-get-data" type="button" class="btn" onclick="fetchPackageByVerificationCode()"
+                style="width: 100%; background: #00bcd4; color: #ffffff; font-weight: 700; padding: 12px; border-radius: 8px; border: none; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 188, 212, 0.35); transition: all 0.2s ease;">
+                Get Data
+              </button>
+
+              <div id="verif-result-info" style="font-size: 0.8rem; color: #38bdf8; margin-top: 10px; display: none;">
+                Paket ditemukan: <strong id="verif-found-count" style="color: #fff;">0</strong> linen
+              </div>
+            </div>
+
+            <!-- Middle: Linen Terdaftar -->
+            <div class="card" style="padding: 22px; margin-bottom: 0;">
+              <h3 style="color: #fff; font-size: 1.05rem; font-weight: 700; margin-bottom: 16px;">Linen Terdaftar</h3>
+              <div class="table-wrap" style="max-height: 290px; overflow-y: auto;">
+                <table class="table-history" style="margin: 0;">
+                  <thead>
+                    <tr>
+                      <th style="width: 45px;">NO</th>
+                      <th style="width: 50px;">ID</th>
+                      <th>EPC</th>
+                      <th>KATEGORI</th>
+                      <th>NAMA LINEN</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-linen-terdaftar">
+                    <tr>
+                      <td colspan="5" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Right: Linen Tidak Terdaftar -->
+            <div class="card" style="padding: 22px; margin-bottom: 0;">
+              <h3 style="color: #fff; font-size: 1.05rem; font-weight: 700; margin-bottom: 16px;">Linen Tidak Terdaftar</h3>
+              <div class="table-wrap" style="max-height: 290px; overflow-y: auto;">
+                <table class="table-history" style="margin: 0;">
+                  <thead>
+                    <tr>
+                      <th style="width: 45px;">NO</th>
+                      <th>EPC</th>
+                      <th>KETERANGAN</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody-linen-tidak-terdaftar">
+                    <tr>
+                      <td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADVANCED & AUDIT TOOLS (COLLAPSIBLE) -->
+          <details style="margin-top: 10px; background: rgba(7, 21, 38, 0.6); border: 1px solid #173554; border-radius: 12px; padding: 14px 18px;">
+            <summary style="cursor: pointer; color: #8297b0; font-size: 0.85rem; font-weight: 600;">
+              <span>⚙️ Opsi Pengujian EPC Manual & Log Riwayat Operasi</span>
+            </summary>
+            
+            <div style="margin-top: 16px;">
+              <!-- Input EPC Manual -->
+              <div style="background: rgba(0, 212, 255, 0.05); border: 1px dashed rgba(0, 212, 255, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+                <div style="font-size: 0.8rem; color: #00D4FF; font-weight: 600; margin-bottom: 8px;">Simulasi Input EPC Manual (Pengujian Tanpa Scanner Fisik)</div>
+                <div style="display: flex; gap: 10px;">
+                  <input type="text" id="input-manual-epc" placeholder="Masukkan 24 Hex EPC..."
+                    style="flex: 1; background: #071526; border: 1px solid #1e3a5f; color: #fff; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 0.85rem;" />
+                  <button id="btn-manual-add-epc" type="button" class="btn btn-secondary" onclick="manualAddEpc()"
+                    style="padding: 8px 16px; font-size: 0.8rem;">
+                    + Tambah EPC
+                  </button>
+                </div>
+              </div>
+
+              <!-- Daftar Paket Masuk Dari Supplier Cloud -->
+              <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 0.85rem; font-weight: 600; color: #cbd5e1;">Daftar Paket Masuk (Supplier Cloud)</span>
+                  <button type="button" class="btn btn-secondary" onclick="loadIncomingPackagesTable()" style="padding: 4px 10px; font-size: 0.75rem;">Refresh</button>
+                </div>
+                <div class="table-wrap">
+                  <table class="table-history">
+                    <thead>
+                      <tr>
+                        <th>ID Paket</th>
+                        <th>Kode Pengiriman</th>
+                        <th>Status</th>
+                        <th>Device Pengirim</th>
+                        <th>Waktu Kirim</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody id="incoming-packages-tbody">
+                      <tr><td colspan="6" style="text-align: center; color: #64748b; padding: 12px;">Memuat paket...</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Riwayat Status Operasi Paket -->
+              <div>
+                <span style="font-size: 0.85rem; font-weight: 600; color: #cbd5e1; display: block; margin-bottom: 8px;">Audit Status Operasi Paket (SQLite)</span>
+                <div class="table-wrap">
+                  <table class="table-history">
+                    <thead>
+                      <tr>
+                        <th>Operation ID</th>
+                        <th>Paket ID</th>
+                        <th>Phase Lifecycle</th>
+                        <th>Sync State</th>
+                        <th>Transaksi ID</th>
+                        <th>Scan Count</th>
+                        <th>Waktu Dibuat</th>
+                      </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                      <tr><td colspan="7" style="text-align: center; color: #64748b; padding: 12px;">Pilih paket untuk melihat riwayat.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <!-- Hidden compatibility elements to prevent any script exceptions -->
+          <div style="display: none;">
+            <select id="select-ruangan"></select>
+            <div id="ruangan-empty-alert"></div>
+            <div id="gate-banner"><span id="gate-banner-text">Memeriksa status Feature Gate...</span></div>
+            <div id="held-alert"><span id="held-alert-text">Operasi tertahan membutuhkan rekonsiliasi.</span></div>
+            <span id="lifecycle-badge" class="badge badge-secondary">MENUNGGU PEMINDAIAN</span>
+            <span id="manifest-match-text">0 / 0 Linen</span>
+            <span id="manifest-match-badge" class="badge badge-secondary">0%</span>
+            <span id="local-commit-text">Belum Tersimpan</span>
+            <span id="scan-state-indicator">STANDBY</span>
+            <span id="text-op-id">-</span>
+            <span id="text-claim-status">BELUM CLAIM</span>
+            <span id="text-local-status">BELUM COMMIT</span>
+            <span id="text-confirm-status">BELUM CONFIRM</span>
+            <div id="package-loaded-banner">
+              <span id="banner-pkg-code"></span>
+              <span id="banner-pkg-id"></span>
+              <span id="banner-pkg-status"></span>
+              <span id="banner-pkg-detail"></span>
+            </div>
+            <div id="epc-list-container"></div>
+            <button id="btn-stop-scan">Kunci Snapshot</button>
+            <button id="btn-process-receiving">Proses Penerimaan (Claim & Komit Lokal)</button>
+            <button id="btn-fetch-package">Ambil & Verifikasi Paket</button>
+          </div>
+        </div>
+
+        <!-- ================= SECTION B: LOG PENERIMAAN LINEN ================= -->
+
+
+        <div class="setting-tab-content" id="setting-tab-log" style="display:none;">
+
+
+          <section class="hero-banner">
+
+
+            <div class="hero-text-box">
+
+
+              <div class="hero-eyebrow">SETTINGS / LOG PENERIMAAN LINEN</div>
+
+
+              <h1 class="hero-title">Log <span>Penerimaan Linen</span></h1>
+
+
+              <p class="hero-desc">Lihat riwayat penerimaan linen beserta detail setiap linen yang diterima dari pihak
+
+
+                supplier.</p>
+
+
+            </div>
+
+
+            <div class="hero-img-box" style="background-image: url('/static/images/banner_log.png');"></div>
+
+
+          </section>
+
+
+
+
+
+          <div class="layout-equal-2col">
+
+
+            <!-- Left Card: Penerimaan Linen -->
+
+
+            <section class="card">
+
+
+              <div class="card-header">
+
+
+                <h2 class="card-title">Penerimaan Linen</h2>
+
+
+              </div>
+
+
+              <div class="table-card-wrap">
+
+
+                <div class="table-wrap">
+
+
+                  <table>
+
+
+                    <thead>
+
+
+                      <tr>
+
+
+                        <th>No</th>
+
+
+                        <th>Tanggal</th>
+
+
+                        <th>Petugas</th>
+
+
+                        <th>Jumlah Linen</th>
+
+
+                        <th>Keterangan</th>
+
+
+                      </tr>
+
+
+                    </thead>
+
+
+                    <tbody id="log-penerimaan-body">
+
+
+                      <tr>
+
+
+                        <td colspan="5" style="text-align:center; color:var(--text-sub);">Memuat log penerimaan...</td>
+
+
+                      </tr>
+
+
+                    </tbody>
+
+
+                  </table>
+
+
+                </div>
+
+
+              </div>
+
+
+            </section>
+
+
+
+
+
+            <!-- Right Card: Detail Linen -->
+
+
+            <section class="card">
+
+
+              <div class="card-header">
+
+
+                <h2 class="card-title">Detail Linen</h2>
+
+
+              </div>
+
+
+              <div class="table-card-wrap">
+
+
+                <div class="table-wrap">
+
+
+                  <table>
+
+
+                    <thead>
+
+
+                      <tr>
+
+
+                        <th>No</th>
+
+
+                        <th>EPC</th>
+
+
+                        <th>Kategori</th>
+
+
+                        <th>Nama Linen</th>
+
+
+                      </tr>
+
+
+                    </thead>
+
+
+                    <tbody id="log-detail-body">
+
+
+                      <tr>
+
+
+                        <td colspan="4" style="text-align:center; color:var(--text-sub);">Pilih baris pada tabel
+
+
+                          Penerimaan Linen.</td>
+
+
+                      </tr>
+
+
+                    </tbody>
+
+
+                  </table>
+
+
+                </div>
+
+
+              </div>
+
+
+            </section>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- ================= SECTION C: PENGATURAN UMUM ================= -->
+
+
+        <div class="setting-tab-content" id="setting-tab-general" style="display:none;">
+
+
+          <section class="card">
+
+
+            <div class="card-header">
+
+
+              <h2 class="card-title">Pengaturan Umum Sistem</h2>
+
+
+            </div>
+
+
+            <div style="color: var(--text-muted); font-size: 0.9rem;">
+
+
+              <p style="margin-bottom: 12px;">Sistem Informasi Client Rumah Sakit - RFID Tracking Linen</p>
+
+
+              <p>Status Reader: <strong id="reader-status">Ready</strong></p>
+
+
+            </div>
+
+
+          </section>
+
+
+        </div>
+
+
+
+
+
+      </main>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+  <script src="/static/app_core.js?v=80"></script>
+  <script>
+    let activeOperationId = null;
+    let activeManifestItems = [];
+    let isFeatureGateActive = false;
+    let scanPollInterval = null;
+    let isScanning = false;
+    let scannedEpcsList = [];
+
+    async function loadActiveRooms() {
+      const selectTujuan = document.getElementById("select-ruangan-tujuan");
+      const selectFallback = document.getElementById("select-ruangan");
+      const emptyAlert = document.getElementById("ruangan-empty-alert");
+      if (!selectTujuan && !selectFallback) return;
+
+      try {
+        const res = await fetch("/api/master/ruangan?is_active=true", {
+          credentials: "same-origin",
+          headers: { "X-ClientS-Request": "1" }
+        });
+        if (!res.ok) throw new Error("Gagal mengambil master data ruangan.");
+        const rooms = await res.json();
+        if (!rooms || rooms.length === 0) {
+          const emptyOpt = '<option value="" disabled selected>-- Tidak ada ruangan aktif --</option>';
+          if (selectTujuan) { selectTujuan.innerHTML = emptyOpt; selectTujuan.disabled = true; }
+          if (selectFallback) { selectFallback.innerHTML = emptyOpt; selectFallback.disabled = true; }
+          if (emptyAlert) emptyAlert.style.display = "block";
+          return;
+        }
+        if (emptyAlert) emptyAlert.style.display = "none";
+        const optionsHtml = rooms.map((r, idx) => `<option value="${r.nama_ruangan}" ${idx === 0 ? "selected" : ""}>${r.kode_ruangan} - ${r.nama_ruangan}</option>`).join("");
+        if (selectTujuan) {
+          selectTujuan.innerHTML = optionsHtml;
+          selectTujuan.disabled = false;
+        }
+        if (selectFallback) {
+          selectFallback.innerHTML = optionsHtml;
+          selectFallback.disabled = false;
+        }
+      } catch (err) {
+        console.error("Gagal memuat ruangan aktif:", err);
+        const errOpt = '<option value="" disabled selected>Error memuat ruangan</option>';
+        if (selectTujuan) selectTujuan.innerHTML = errOpt;
+        if (selectFallback) selectFallback.innerHTML = errOpt;
+      }
+    }
+
+    function renderLinenTerdaftar() {
+      const tbody = document.getElementById("tbody-linen-terdaftar");
+      if (!tbody) return;
+      if (!activeManifestItems || activeManifestItems.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = activeManifestItems.map((item, idx) => `
+        <tr>
+          <td>${idx + 1}</td>
+          <td style="color: #94a3b8; font-size: 0.82rem;">${item.id || (idx + 1)}</td>
+          <td style="font-family: monospace; font-weight: 600; color: #38bdf8;">${item.epc}</td>
+          <td><span class="cat-badge cat-${(item.kategori || 'linen').toLowerCase()}">${item.kategori || 'Linen'}</span></td>
+          <td style="color: #e2e8f0; font-weight: 500;">${item.nama_linen || '-'}</td>
+        </tr>
+      `).join("");
+    }
+
+    // Global hook called by app_core.js WebSocket handler on incoming RFID tags
+    window.onSyncDataEpcScanned = function(rawEpc) {
+      if (!isScanning) return;
+      handleIncomingScannedEpc(rawEpc);
+    };
+
+    function handleIncomingScannedEpc(rawEpc) {
+      if (!rawEpc) return;
+      const cleanEpc = String(rawEpc).trim().toUpperCase();
+      if (!cleanEpc) return;
+
+      if (!scannedEpcsList.includes(cleanEpc)) {
+        scannedEpcsList.push(cleanEpc);
+        updateScannedTables(scannedEpcsList);
+      }
+
+      // Synchronize with active backend receiving session if present
+      if (activeOperationId) {
+        fetch("/api/receiving/scan/manual-epc", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+          body: JSON.stringify({ operation_id: activeOperationId, epc: cleanEpc })
+        }).catch(() => {});
+      }
+    }
+
+    async function fetchPackageByVerificationCode(showAlertOnError = true) {
+      const verifInput = document.getElementById("input-verif-code");
+      const code = verifInput ? verifInput.value.trim() : "";
+      if (!code) {
+        if (showAlertOnError) {
+          notify("Masukkan kode verifikasi dari surat jalan fisik terlebih dahulu.", "warning");
+          if (verifInput) verifInput.focus();
+        }
+        return;
+      }
+
+      const btn = document.getElementById("btn-get-data") || document.getElementById("btn-fetch-package");
+      const origText = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = "Memverifikasi...";
+      }
+
+      try {
+        const res = await fetch("/api/receiving/package/lookup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-ClientS-Request": "1"
+          },
+          body: JSON.stringify({ verification_code: code })
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ detail: "Gagal memverifikasi paket." }));
+          if (showAlertOnError) notify(`Gagal mengambil paket: ${err.detail}`, "error");
+          return;
+        }
+
+        const data = await res.json();
+        document.getElementById("input-paket-id").value = data.paket_id;
+        activeManifestItems = data.manifest_items || [];
+
+        renderLinenTerdaftar();
+
+        const infoEl = document.getElementById("verif-result-info");
+        const foundCount = document.getElementById("verif-found-count");
+        if (infoEl) infoEl.style.display = "block";
+        if (foundCount) foundCount.textContent = activeManifestItems.length;
+
+        // If scanning is already active, bind/start receiving session for this package
+        if (isScanning && !activeOperationId) {
+          fetch("/api/receiving/scan/start", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ paket_id: data.paket_id })
+          }).then(r => r.json()).then(s => {
+            if (s.operation_id) {
+              activeOperationId = s.operation_id;
+              scannedEpcsList.forEach(epc => {
+                fetch("/api/receiving/scan/manual-epc", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+                  body: JSON.stringify({ operation_id: s.operation_id, epc: epc })
+                }).catch(() => {});
+              });
+              startScanPolling(data.paket_id);
+            }
+          }).catch(() => {});
+        }
+
+        // Re-evaluate any already scanned tags against the manifest
+        updateScannedTables(scannedEpcsList);
+        loadOperationHistory(data.paket_id);
+      } catch (err) {
+        if (showAlertOnError) notify("Terjadi kesalahan koneksi saat memverifikasi paket: " + err.message, "error");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    async function toggleScan() {
+      if (!isScanning) {
+        const verifInput = document.getElementById("input-verif-code");
+        const code = verifInput ? verifInput.value.trim() : "";
+        let currentPaketId = document.getElementById("input-paket-id").value;
+
+        // Auto-fetch manifest if code is entered but package not looked up yet
+        if (!currentPaketId && code) {
+          await fetchPackageByVerificationCode(false);
+          currentPaketId = document.getElementById("input-paket-id").value;
+        }
+
+        // 1. Always activate hardware RFID reader (COM3 - Linen Masuk)
+        try {
+          await fetch("/api/rfid/scan/start", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ mode: "LINEN_MASUK" })
+          }).catch(err => console.warn("Hardware reader start warning:", err));
+        } catch (_) {}
+
+        // 2. If package is bound, also start backend receiving session
+        if (currentPaketId) {
+          try {
+            const res = await fetch("/api/receiving/scan/start", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+              body: JSON.stringify({ paket_id: parseInt(currentPaketId), operation_id: activeOperationId })
+            });
+            if (res.ok) {
+              const data = await res.json();
+              activeOperationId = data.operation_id;
+              startScanPolling(currentPaketId);
+            }
+          } catch (err) {
+            console.warn("Receiving session start warning:", err);
+          }
+        }
+
+        isScanning = true;
+        if (typeof settingScanActive !== 'undefined') settingScanActive = true;
+
+        const btn = document.getElementById("btn-start-scan");
+        if (btn) {
+          btn.style.background = "#ef4444";
+          btn.style.boxShadow = "0 4px 14px rgba(239, 68, 68, 0.35)";
+          const icon = document.getElementById("btn-scan-icon");
+          const text = document.getElementById("btn-scan-text");
+          if (icon) icon.textContent = "■";
+          if (text) text.textContent = "Stop Scan";
+        }
+      } else {
+        await stopScan();
+      }
+    }
+
+    async function stopScan() {
+      if (scanPollInterval) {
+        clearInterval(scanPollInterval);
+        scanPollInterval = null;
+      }
+      const paketId = document.getElementById("input-paket-id").value;
+      if (paketId && activeOperationId) {
+        try {
+          await fetch("/api/receiving/scan/stop", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ paket_id: parseInt(paketId), operation_id: activeOperationId })
+          });
+        } catch (_) { }
+      }
+
+      try {
+        await fetch("/api/rfid/scan/stop", {
+          method: "POST",
+          headers: { "X-ClientS-Request": "1" }
+        });
+      } catch (_) { }
+
+      isScanning = false;
+      if (typeof settingScanActive !== 'undefined') settingScanActive = false;
+
+      const btn = document.getElementById("btn-start-scan");
+      if (btn) {
+        btn.style.background = "#00bcd4";
+        btn.style.boxShadow = "0 4px 14px rgba(0, 188, 212, 0.35)";
+        const icon = document.getElementById("btn-scan-icon");
+        const text = document.getElementById("btn-scan-text");
+        if (icon) icon.textContent = "▶";
+        if (text) text.textContent = "Start Scan";
+      }
+    }
+
+    function startScanPolling(paketId) {
+      if (scanPollInterval) clearInterval(scanPollInterval);
+      scanPollInterval = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/receiving/scan/session/${paketId}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.scan_status === "scanning" && data.scanned_epcs) {
+              data.scanned_epcs.forEach(epc => {
+                const norm = String(epc).trim().toUpperCase();
+                if (norm && !scannedEpcsList.includes(norm)) {
+                  scannedEpcsList.push(norm);
+                }
+              });
+              updateScannedTables(scannedEpcsList);
+            }
+          }
+        } catch (_) { }
+      }, 1000);
+    }
+
+    function updateScannedTables(scannedEpcs) {
+      scannedEpcsList = scannedEpcs;
+      const manifestEpcMap = new Map();
+      activeManifestItems.forEach(item => {
+        manifestEpcMap.set((item.epc || "").trim().toUpperCase(), item);
+      });
+
+      const tbodyCek = document.getElementById("tbody-cek-linen");
+      const tbodyTidak = document.getElementById("tbody-linen-tidak-terdaftar");
+
+      let terdaftarCount = 0;
+      let tidakTerdaftarList = [];
+
+      if (!scannedEpcs || scannedEpcs.length === 0) {
+        if (tbodyCek) tbodyCek.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data scan.</td></tr>';
+        if (tbodyTidak) tbodyTidak.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td></tr>';
+        document.getElementById("stat-total-terdaftar").textContent = "0";
+        document.getElementById("stat-total-tidak-terdaftar").textContent = "0";
+        return;
+      }
+
+      const rowsCekHtml = scannedEpcs.map((rawEpc, idx) => {
+        const cleanEpc = (rawEpc || "").trim().toUpperCase();
+        const isAda = manifestEpcMap.has(cleanEpc);
+        if (isAda) {
+          terdaftarCount++;
+        } else {
+          tidakTerdaftarList.push(rawEpc);
+        }
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td style="font-family: monospace; font-weight: 600; color: #e2e8f0;">${rawEpc}</td>
+            <td style="text-align: center;">
+              <span class="badge ${isAda ? 'badge-success' : 'badge-danger'}" style="padding: 4px 14px; font-weight: 700;">
+                ${isAda ? 'ADA' : 'TIDAK'}
+              </span>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      if (tbodyCek) tbodyCek.innerHTML = rowsCekHtml;
+
+      if (tbodyTidak) {
+        if (tidakTerdaftarList.length === 0) {
+          tbodyTidak.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td></tr>';
+        } else {
+          tbodyTidak.innerHTML = tidakTerdaftarList.map((epc, idx) => `
+            <tr>
+              <td>${idx + 1}</td>
+              <td style="font-family: monospace; font-weight: 600; color: #f87171;">${epc}</td>
+              <td><span style="color: #f87171; font-size: 0.82rem;">Tidak terdaftar di paket</span></td>
+            </tr>
+          `).join("");
+        }
+      }
+
+      document.getElementById("stat-total-terdaftar").textContent = terdaftarCount;
+      document.getElementById("stat-total-tidak-terdaftar").textContent = tidakTerdaftarList.length;
+
+      const manifestMatchText = document.getElementById("manifest-match-text");
+      if (manifestMatchText) manifestMatchText.textContent = `${terdaftarCount} / ${activeManifestItems.length} Linen`;
+    }
+
+    async function resetScanTables() {
+      if (isScanning) {
+        await stopScan();
+      }
+      const currentPaketId = document.getElementById("input-paket-id").value;
+      if (currentPaketId) {
+        try {
+          await fetch("/api/receiving/scan/reset", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ paket_id: parseInt(currentPaketId), operation_id: activeOperationId })
+          });
+        } catch (_) { }
+      }
+      scannedEpcsList = [];
+      document.getElementById("stat-total-terdaftar").textContent = "0";
+      document.getElementById("stat-total-tidak-terdaftar").textContent = "0";
+      const tbodyCek = document.getElementById("tbody-cek-linen");
+      if (tbodyCek) tbodyCek.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data scan.</td></tr>';
+      const tbodyTidak = document.getElementById("tbody-linen-tidak-terdaftar");
+      if (tbodyTidak) tbodyTidak.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #64748b; padding: 32px 12px;">Belum ada data.</td></tr>';
+    }
+
+    async function manualAddEpc() {
+      const epcInput = document.getElementById("input-manual-epc");
+      const epcVal = epcInput ? epcInput.value.trim().toUpperCase() : "";
+      if (!epcVal) {
+        notify("Masukkan kode EPC terlebih dahulu.", "warning");
+        return;
+      }
+      handleIncomingScannedEpc(epcVal);
+      if (epcInput) epcInput.value = "";
+
+      const currentPaketId = document.getElementById("input-paket-id").value;
+      if (!currentPaketId) {
+        return;
+      }
+
+      if (!activeOperationId) {
+        try {
+          const res = await fetch("/api/receiving/scan/start", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ paket_id: parseInt(currentPaketId), operation_id: null })
+          });
+          if (res.ok) {
+            const d = await res.json();
+            activeOperationId = d.operation_id;
+          }
+        } catch (_) { }
+      }
+
+      try {
+        const res = await fetch("/api/receiving/scan/manual-epc", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+          body: JSON.stringify({ operation_id: activeOperationId, epc: epcVal })
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          notify(`Gagal menambahkan EPC: ${err.detail || "Terjadi kesalahan."}`, "error");
+          return;
+        }
+        const data = await res.json();
+        updateScannedTables(data.scanned_epcs || []);
+        epcInput.value = "";
+      } catch (err) {
+        notify("Gagal mengirim EPC manual: " + err.message, "error");
+      }
+    }
+
+    async function processPackageReceiving() {
+      const paketId = document.getElementById("input-paket-id").value;
+      const verifCode = (document.getElementById("input-verif-code")?.value || "").trim();
+      const selectRuangan = document.getElementById("select-ruangan-tujuan") || document.getElementById("select-ruangan");
+      const ruangan = selectRuangan ? selectRuangan.value : "";
+      const namaPetugas = (document.getElementById("input-nama-petugas")?.value || "").trim();
+
+      if (!verifCode) {
+        notify("Masukkan Kode Verifikasi dari surat jalan fisik terlebih dahulu.", "warning");
+        return;
+      }
+      if (!paketId) {
+        notify("Silakan klik 'Get Data' terlebih dahulu untuk memverifikasi paket.", "warning");
+        return;
+      }
+      if (!ruangan) {
+        notify("Pilih Ruang Tujuan penyimpanan terlebih dahulu.", "warning");
+        return;
+      }
+
+      if (isScanning) {
+        await stopScan();
+      }
+
+      const btn = document.getElementById("btn-simpan-data");
+      const origText = btn ? btn.innerHTML : "";
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = "Menyimpan Data...";
+      }
+
+      try {
+        const res = await fetch("/api/receiving/process", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+          body: JSON.stringify({
+            paket_id: parseInt(paketId),
+            verification_code: verifCode,
+            operation_id: activeOperationId,
+            ruangan_tujuan: ruangan,
+            nama_petugas: namaPetugas
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          notify(`Penerimaan Gagal: ${data.detail || "Terjadi kesalahan."}`, "error", 6500);
+          return;
+        }
+
+        if (data.lifecycle_phase === "confirmed") {
+          notify(`Berhasil! Paket telah diterima dan linen berhasil disimpan ke Ruangan: ${ruangan}. Petugas: ${namaPetugas || "Operator"}`, "success");
+          loadIncomingPackagesTable();
+          loadOperationHistory(paketId);
+          if (typeof loadSettingLog === "function") {
+            loadSettingLog();
+          }
+        } else if (data.lifecycle_phase === "claim_held_reconciliation") {
+          notify("Operasi tertahan rekonsiliasi. Periksa log riwayat operasi.", "warning");
+        } else {
+          const detailMsg = data.detail || data.failure_reason || data.error || "";
+          notify(`Status Operasi: ${data.lifecycle_phase}${detailMsg ? ` - ${detailMsg}` : ""}`, "warning");
+        }
+      } catch (err) {
+        notify("Terjadi kesalahan jaringan saat memproses penerimaan: " + err.message, "error");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    }
+
+    async function loadIncomingPackagesTable() {
+      const tbody = document.getElementById("incoming-packages-tbody");
+      if (!tbody) return;
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #8297b0; padding: 12px;">Mengambil data paket dari cloud...</td></tr>';
+
+      try {
+        const res = await fetch("/api/receiving/packages", {
+          credentials: "same-origin",
+          headers: { "X-ClientS-Request": "1" }
+        });
+
+        if (!res.ok) {
+          if (res.status === 503) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #f59e0b; padding: 12px;">Fitur penerimaan paket terkunci (Feature Gate nonaktif).</td></tr>';
+            return;
+          }
+          throw new Error("Gagal mengambil data paket");
+        }
+
+        const data = await res.json();
+        const pkgs = data.packages || [];
+        if (pkgs.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #8297b0; padding: 12px;">Tidak ada paket pengiriman yang terdaftar untuk rumah sakit ini.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = pkgs.map(p => {
+          let badgeClass = "badge-secondary";
+          if (p.status === "kirim" || p.status === "pending") badgeClass = "badge-warning";
+          else if (p.status === "claimed") badgeClass = "badge-info";
+          else if (p.status === "confirmed") badgeClass = "badge-success";
+
+          const createdTime = p.created_at ? new Date(p.created_at).toLocaleString('id-ID') : '-';
+          const isConfirmed = p.status === "confirmed";
+
+          return `
+            <tr>
+              <td style="font-weight: 700; color: #fff;">${p.id}</td>
+              <td style="font-family: monospace; color: #00D4FF;">${p.kode_pengiriman || '-'}</td>
+              <td><span class="badge ${badgeClass}">${p.status.toUpperCase()}</span></td>
+              <td style="color: #94a3b8; font-size: 0.75rem;">${p.device_id || '-'}</td>
+              <td style="color: #8297b0; font-size: 0.75rem;">${createdTime}</td>
+              <td>
+                <button type="button" class="btn btn-primary" style="padding: 4px 10px; font-size: 0.75rem;" 
+                  onclick="selectPackage(${p.id})" ${isConfirmed ? 'title="Paket sudah terkonfirmasi"' : ''}>
+                  ${isConfirmed ? 'Lihat Detail' : 'Pilih Paket'}
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #f87171; padding: 12px;">Gagal memuat daftar paket: ' + err.message + '</td></tr>';
+      }
+    }
+
+    function selectPackage(paketId) {
+      const inputEl = document.getElementById("input-paket-id");
+      if (inputEl) {
+        inputEl.value = paketId;
+        const verifInput = document.getElementById("input-verif-code");
+        if (verifInput) {
+          verifInput.focus();
+        }
+      }
+    }
+
+    async function loadOperationHistory(paketId) {
+      try {
+        const res = await fetch(`/api/receiving/operations/${paketId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const tbody = document.getElementById("history-table-body");
+        if (!tbody) return;
+        if (!data.operations || data.operations.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--text-sub); padding: 12px;">Belum ada riwayat operasi untuk paket ini.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = data.operations.map(op => `
+          <tr>
+            <td style="font-family: monospace;">${op.operation_id}</td>
+            <td>${op.paket_id}</td>
+            <td><span class="badge ${op.lifecycle_phase === 'confirmed' ? 'badge-success' : 'badge-warning'}">${op.lifecycle_phase}</span></td>
+            <td>${op.sync_state}</td>
+            <td>${op.transaksi_id || '-'}</td>
+            <td>${op.scan_count}</td>
+            <td>${op.created_at || '-'}</td>
+          </tr>
+        `).join("");
+      } catch (_) { }
+    }
+
+    async function initSyncReceiving() {
+      await loadActiveRooms();
+      await loadIncomingPackagesTable();
+      if (typeof loadSettingLog === "function") {
+        loadSettingLog();
+      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlPaketId = urlParams.get('paket_id');
+      if (urlPaketId) {
+        selectPackage(parseInt(urlPaketId));
+      }
+      const urlCode = urlParams.get('code');
+      if (urlCode) {
+        const verifInput = document.getElementById('input-verif-code');
+        if (verifInput) {
+          verifInput.value = urlCode;
+          setTimeout(() => {
+            fetchPackageByVerificationCode();
+          }, 350);
+        }
+      }
+      try {
+        const res = await fetch("/api/receiving/feature-status");
+        if (res.ok) {
+          const data = await res.json();
+          isFeatureGateActive = data.feature_gate_enabled;
+        }
+      } catch (_) {}
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initSyncReceiving();
+    });
+  </script>
+</body>
+</html>

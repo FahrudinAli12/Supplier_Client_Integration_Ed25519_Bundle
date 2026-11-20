@@ -1,0 +1,5 @@
+# The Supplier is authenticated by a registered Ed25519 device key in the
+# supplier-ingest Edge Function. The function itself verifies the signature,
+# timestamp, active key, nonce, device status, supplier status, and contract.
+[functions.supplier-ingest]
+verify_jwt = false

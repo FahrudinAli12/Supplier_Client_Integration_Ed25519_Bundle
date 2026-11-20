@@ -1,0 +1,29 @@
+# Python and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration and signing keys
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.secret
+
+# Local runtime database files
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

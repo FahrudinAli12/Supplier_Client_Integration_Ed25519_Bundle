@@ -6,7 +6,7 @@
  * kategori/nama-linen, wrapped {data,...} for linen/pengiriman.
  */
 
-const API_BASE = `${location.protocol}//${location.hostname}:8000`;
+const API_BASE = `${location.protocol}//${location.host}`;
 
 // ─── Generic Fetch Helper ─────────────────────────────────
 

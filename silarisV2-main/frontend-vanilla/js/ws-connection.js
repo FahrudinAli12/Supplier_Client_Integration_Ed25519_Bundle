@@ -6,7 +6,8 @@
  * opening or closing the underlying connection.
  */
 
-const WS_BASE = `ws://${location.hostname}:8000/ws`;
+const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+const WS_BASE = `${wsProtocol}//${location.host}/ws`;
 
 /** @type {WebSocket|null} */
 let ws = null;

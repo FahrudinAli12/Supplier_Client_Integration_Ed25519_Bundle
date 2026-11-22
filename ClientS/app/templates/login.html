@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#020b14" />
   <title>Login - Client Checking & Laundry Linen RS</title>
-  <link rel="stylesheet" href="/static/styles.css?v=86" />
+  <link rel="stylesheet" href="/static/styles.css?v=87" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -410,6 +410,29 @@
     .form-input:focus + .input-icon-left,
     .input-wrapper:focus-within .input-icon-left {
       color: var(--accent-cyan);
+    }
+
+    /* Chrome/Edge/Firefox Dark Mode Autofill Override */
+    .form-input:-webkit-autofill,
+    .form-input:-webkit-autofill:hover,
+    .form-input:-webkit-autofill:focus,
+    .form-input:-webkit-autofill:active,
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 1000px #061324 inset !important;
+      -webkit-text-fill-color: #ffffff !important;
+      caret-color: #ffffff !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 10px !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .form-input:-webkit-autofill:focus,
+    input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
+      border-color: var(--accent-cyan) !important;
     }
 
     /* Password Reveal Button */

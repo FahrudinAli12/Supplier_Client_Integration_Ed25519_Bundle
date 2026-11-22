@@ -868,17 +868,24 @@ a {
 }
 
 input[type="text"],
+input[type="email"],
+input[type="password"],
 input[type="number"],
+input[type="search"],
 input[type="datetime-local"],
+input:not([type]),
 select,
 textarea {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 9px;
+  padding: 11px 14px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-input);
-  color: var(--text-main);
+  color: #ffffff;
   outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.9rem;
   transition: all 0.2s ease;
 }
 
@@ -886,12 +893,31 @@ input:focus,
 select:focus,
 textarea:focus {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px var(--accent-cyan-glow);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  background-color: #07172b;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-sub);
+  color: #475569;
+}
+
+/* Global Dark Mode Autofill Override */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #061324 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
+  border-color: var(--accent-cyan) !important;
 }
 
 /* Buttons */
@@ -1274,14 +1300,26 @@ tbody tr.selected td {
 }
 
 .card-search-box input {
-  padding: 7px 10px 7px 32px;
-  font-size: 0.78rem;
-  border-radius: 8px;
+  padding: 8px 12px 8px 36px;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-input);
+  color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.card-search-box input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  background-color: #07172b;
 }
 
 .search-icon {
   position: absolute;
-  left: 10px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 14px;
@@ -1358,32 +1396,34 @@ tbody tr.selected td {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-input);
   border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 10px 14px;
-  border-radius: 6px;
+  color: #ffffff;
+  padding: 11px 14px;
+  border-radius: 10px;
   font-size: 0.9rem;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group select option {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  background-color: var(--bg-card);
+  color: #ffffff;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  background-color: #07172b;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--text-sub);
+  color: #475569;
 }
 
 /* ==========================================================================
@@ -1392,24 +1432,27 @@ tbody tr.selected td {
 .custom-dropdown {
   position: relative;
   width: 100%;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-input);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 10px;
   color: var(--text-main);
   cursor: pointer;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   user-select: none;
 }
 
-.custom-dropdown:focus {
+.custom-dropdown:focus,
+.custom-dropdown:focus-within,
+.custom-dropdown.open {
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
 }
 
 .dropdown-selected {
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 0.9rem;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

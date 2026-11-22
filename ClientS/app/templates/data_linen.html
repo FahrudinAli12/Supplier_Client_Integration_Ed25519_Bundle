@@ -25,7 +25,7 @@
   <title>Master Data - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=87" />
+  <link rel="stylesheet" href="/static/styles.css?v=88" />
 
 
 </head>
@@ -1247,7 +1247,7 @@
             <!-- 1. Kategori -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">KATEGORI LINEN</label>
-              <select id="filter-linen-kategori" style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;">
+              <select id="filter-linen-kategori" style="width: 100%; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
                 <option value="">Semua Kategori</option>
               </select>
             </div>
@@ -1256,8 +1256,8 @@
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">NAMA LINEN / EPC</label>
               <div style="position: relative;">
-                <input type="text" id="filter-linen-nama" placeholder="Cari nama linen atau EPC..." style="width: 100%; box-sizing: border-box; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 10px 14px 10px 36px; color: #fff; font-size: 0.88rem; outline: none;" />
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8297b0" stroke-width="2" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
+                <input type="text" id="filter-linen-nama" placeholder="Cari nama linen atau EPC..." style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 10px 14px 10px 36px; color: #fff; font-size: 0.88rem; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" />
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -1267,7 +1267,7 @@
             <!-- 3. Lokasi / Ruangan -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">LOKASI / RUANGAN</label>
-              <select id="filter-linen-lokasi" style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer;">
+              <select id="filter-linen-lokasi" style="width: 100%; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
                 <option value="">Semua Lokasi</option>
                 <option value="Storage">Gudang / Storage</option>
                 <option value="R. Laundry">R. Laundry</option>
@@ -1277,7 +1277,7 @@
             <!-- 4. Jumlah Cuci / Siklus -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">SIKLUS / JUMLAH CUCI</label>
-              <select id="filter-linen-cuci" style="width: 100%; background: #071b33; border: 1px solid #173554; border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 0.85rem; outline: none; cursor: pointer;">
+              <select id="filter-linen-cuci" style="width: 100%; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
                 <option value="">Semua Siklus Cuci</option>
                 <option value="0-14">Baru (&lt; 15x cuci)</option>
                 <option value="15-49">Normal (15 - 49x cuci)</option>
@@ -1467,7 +1467,7 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 14px;">
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Alasan Pemusnahan / Afkir <span style="color:#ef4444;">*</span></label>
-                  <select id="afkir-alasan" required style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none;">
+                  <select id="afkir-alasan" required style="width: 100%; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
                     <option value="Rusak / Robek / Berlubang">Rusak / Robek / Berlubang</option>
                     <option value="Noda Kimia / Infeksius Permanen">Noda Kimia / Infeksius Permanen</option>
                     <option value="Lapuk / Habis Masa Pakai">Lapuk / Habis Masa Pakai</option>
@@ -1478,11 +1478,11 @@
                 </div>
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Nama Petugas Eksekutor <span style="color:#ef4444;">*</span></label>
-                  <input type="text" id="afkir-petugas" placeholder="Nama Petugas" required style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; box-sizing: border-box; outline: none;" />
+                  <input type="text" id="afkir-petugas" placeholder="Nama Petugas" required style="width: 100%; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; box-sizing: border-box; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" />
                 </div>
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Metode Tindakan</label>
-                  <select id="afkir-action" style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none;">
+                  <select id="afkir-action" style="width: 100%; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
                     <option value="afkir">Tandai Status AFKIR (Disarankan: Kunci dari Transaksi & Audit Tersimpan)</option>
                     <option value="delete">Hapus Permanen dari Database (Hard Delete)</option>
                   </select>
@@ -1491,16 +1491,16 @@
 
               <div>
                 <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Catatan Tambahan (Opsional)</label>
-                <input type="text" id="afkir-catatan" placeholder="Contoh: Pemusnahan linen ruang Dahlia triwulan IV" style="width: 100%; background: var(--bg-input, #061426); border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; box-sizing: border-box; outline: none;" />
+                <input type="text" id="afkir-catatan" placeholder="Contoh: Pemusnahan linen ruang Dahlia triwulan IV" style="width: 100%; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; box-sizing: border-box; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" />
               </div>
             </form>
 
             <!-- Scanning Controls & Table Header -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
               <div style="display: flex; align-items: center; gap: 8px;">
-                <button type="button" id="btn-toggle-afkir-scan" style="background: #00D4FF; color: #000; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
-                  <span id="afkir-scan-icon">▶</span>
-                  <span id="afkir-scan-text">Mulai Scan Fisik</span>
+                <button type="button" id="btn-toggle-afkir-scan" style="background: #00D4FF; color: #000000; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 212, 255, 0.35); transition: all 0.2s;">
+                  <span id="afkir-scan-icon" style="color: #000000;">▶</span>
+                  <span id="afkir-scan-text" style="color: #000000;">Mulai Scan Fisik</span>
                 </button>
                 <button type="button" id="btn-reset-afkir-scan" style="background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); padding: 8px 14px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">
                   Reset Tabel

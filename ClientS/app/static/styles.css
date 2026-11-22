@@ -874,32 +874,59 @@ input[type="number"],
 input[type="search"],
 input[type="datetime-local"],
 input:not([type]),
-select,
 textarea {
   width: 100%;
-  padding: 11px 14px;
+  padding: 12px 16px;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-input);
+  border: 1px solid #00D4FF;
+  background-color: #07172b;
   color: #ffffff;
   outline: none;
   box-sizing: border-box;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.92rem;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
   transition: all 0.2s ease;
 }
 
 input:focus,
-select:focus,
 textarea:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
   background-color: #07172b;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #475569;
+  color: #8297b0;
+}
+
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #00D4FF;
+  background-color: #061426;
+  color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.92rem;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+select:focus {
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5);
+  background-color: #07172b;
+}
+
+select option {
+  background-color: #0B2038;
+  color: #ffffff;
+  padding: 10px;
 }
 
 /* Global Dark Mode Autofill Override */
@@ -907,54 +934,82 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #061324 inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #07172b inset !important;
   -webkit-text-fill-color: #ffffff !important;
   caret-color: #ffffff !important;
-  border: 1px solid var(--border-color) !important;
+  border: 1px solid #00D4FF !important;
   border-radius: 10px !important;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
-  border-color: var(--accent-cyan) !important;
+  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.3) !important;
+  border-color: #00D4FF !important;
 }
 
 /* Buttons */
 .btn {
-  padding: 10px 16px;
-  border-radius: 9px;
+  padding: 10px 18px;
+  border-radius: 10px;
   border: none;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #00c2cb, #008491);
-  color: var(--text-white);
-  box-shadow: var(--shadow-cyan);
+  background: #00D4FF !important;
+  color: #000000 !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(0, 212, 255, 0.35) !important;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #00d8e2, #009ab5);
-  box-shadow: 0 8px 20px rgba(0, 194, 203, 0.35);
+  background: #33ddff !important;
+  color: #000000 !important;
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5) !important;
 }
 
-.btn-danger {
-  background: linear-gradient(135deg, #ef4444, #b91c1c);
-  color: var(--text-white);
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.25);
+.btn-primary svg,
+.btn-primary *,
+.btn-primary svg path,
+.btn-primary svg polygon,
+.btn-primary svg line {
+  color: #000000 !important;
+  stroke: #000000 !important;
+  fill: #000000 !important;
 }
 
-.btn-danger:hover {
-  background: linear-gradient(135deg, #f87171, #dc2626);
+.btn-danger,
+.btn-primary.btn-danger {
+  background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35) !important;
+}
+
+.btn-danger:hover,
+.btn-primary.btn-danger:hover {
+  background: linear-gradient(135deg, #f87171, #dc2626) !important;
+}
+
+.btn-danger svg,
+.btn-primary.btn-danger svg,
+.btn-danger *,
+.btn-primary.btn-danger * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
 }
 
 .btn-secondary {
@@ -1300,20 +1355,21 @@ tbody tr.selected td {
 }
 
 .card-search-box input {
-  padding: 8px 12px 8px 36px;
-  font-size: 0.85rem;
+  padding: 10px 14px 10px 38px;
+  font-size: 0.88rem;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-input);
+  border: 1px solid #00D4FF;
+  background: #07172b;
   color: #ffffff;
   outline: none;
   box-sizing: border-box;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
   transition: all 0.2s ease;
 }
 
 .card-search-box input:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5);
   background-color: #07172b;
 }
 
@@ -1322,9 +1378,9 @@ tbody tr.selected td {
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  color: var(--text-sub);
+  width: 15px;
+  height: 15px;
+  color: #00D4FF;
 }
 
 /* Donut Chart Simulation */
@@ -1394,36 +1450,54 @@ tbody tr.selected td {
 }
 
 .form-group input,
-.form-group select,
 .form-group textarea {
-  background-color: var(--bg-input);
-  border: 1px solid var(--border-color);
+  background-color: #07172b;
+  border: 1px solid #00D4FF;
   color: #ffffff;
-  padding: 11px 14px;
+  padding: 12px 16px;
   border-radius: 10px;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  font-family: inherit;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
   transition: all 0.2s ease;
   width: 100%;
   box-sizing: border-box;
 }
 
-.form-group select option {
-  background-color: var(--bg-card);
+.form-group select {
+  background-color: #061426;
+  border: 1px solid #00D4FF;
   color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.form-group select option {
+  background-color: #0B2038;
+  color: #ffffff;
+  padding: 10px;
 }
 
 .form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5);
   background-color: #07172b;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #475569;
+  color: #8297b0;
 }
 
 /* ==========================================================================
@@ -1432,46 +1506,50 @@ tbody tr.selected td {
 .custom-dropdown {
   position: relative;
   width: 100%;
-  background-color: var(--bg-input);
-  border: 1px solid var(--border-color);
+  background-color: #061426;
+  border: 1px solid #00D4FF;
   border-radius: 10px;
-  color: var(--text-main);
+  color: #ffffff;
   cursor: pointer;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);
   transition: all 0.2s ease;
   user-select: none;
+  box-sizing: border-box;
 }
 
 .custom-dropdown:focus,
 .custom-dropdown:focus-within,
 .custom-dropdown.open {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5);
 }
 
 .dropdown-selected {
-  padding: 11px 14px;
-  font-size: 0.9rem;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  font-weight: 500;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #ffffff;
 }
 
 .dropdown-selected::after {
   content: "";
-  border: solid var(--text-sub);
+  border: solid #00D4FF;
   border-width: 0 2px 2px 0;
   display: inline-block;
-  padding: 3px;
+  padding: 4px;
   transform: rotate(45deg);
-  transition: transform 0.3s ease;
-  margin-bottom: 3px;
+  transition: transform 0.2s ease;
+  margin-bottom: 2px;
 }
 
 .custom-dropdown.open .dropdown-selected::after {
   transform: rotate(-135deg);
-  margin-top: 5px;
+  margin-top: 4px;
   margin-bottom: 0;
 }
 
@@ -1480,16 +1558,16 @@ tbody tr.selected td {
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  box-shadow: var(--shadow-cyan);
+  background-color: #0B2038;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 212, 255, 0.15);
   z-index: 100;
-  max-height: 200px;
+  max-height: 220px;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   transition: all 0.2s ease;
 }
 
@@ -1500,14 +1578,22 @@ tbody tr.selected td {
 }
 
 .dropdown-option {
-  padding: 10px 14px;
+  padding: 12px 16px;
   font-size: 0.9rem;
-  transition: background 0.2s ease;
+  color: #e6f0fa;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.dropdown-option:hover, .dropdown-option.selected {
-  background-color: var(--bg-card-hover);
-  color: var(--text-white);
+.dropdown-option:hover {
+  background-color: #163a63;
+  color: #ffffff;
+}
+
+.dropdown-option.selected {
+  background-color: #122f4f;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* ==========================================================================

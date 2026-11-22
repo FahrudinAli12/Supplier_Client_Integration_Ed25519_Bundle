@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#020b14" />
   <title>Login - Client Checking & Laundry Linen RS</title>
-  <link rel="stylesheet" href="/static/styles.css?v=87" />
+  <link rel="stylesheet" href="/static/styles.css?v=88" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -378,13 +378,14 @@
     .input-wrapper .form-input,
     .form-input {
       width: 100% !important;
-      background: var(--bg-input) !important;
-      border: 1px solid var(--border-color) !important;
+      background: #07172b !important;
+      border: 1px solid #00D4FF !important;
       border-radius: 10px !important;
       padding: 13px 16px 13px 44px !important;
       font-size: 0.92rem !important;
       color: #ffffff !important;
       outline: none !important;
+      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
       transition: all 0.2s ease !important;
       font-family: inherit !important;
       line-height: 1.5 !important;
@@ -398,18 +399,22 @@
     }
 
     .form-input::placeholder {
-      color: #475569 !important;
+      color: #8297b0 !important;
     }
 
     .form-input:focus {
-      border-color: var(--accent-cyan) !important;
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
+      border-color: #00D4FF !important;
+      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
       background: #07172b !important;
+    }
+
+    .input-icon-left {
+      color: #00D4FF !important;
     }
 
     .form-input:focus + .input-icon-left,
     .input-wrapper:focus-within .input-icon-left {
-      color: var(--accent-cyan);
+      color: #00D4FF !important;
     }
 
     /* Chrome/Edge/Firefox Dark Mode Autofill Override */
@@ -421,18 +426,19 @@
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-      -webkit-box-shadow: 0 0 0 1000px #061324 inset !important;
+      -webkit-box-shadow: 0 0 0 1000px #07172b inset !important;
       -webkit-text-fill-color: #ffffff !important;
       caret-color: #ffffff !important;
-      border: 1px solid var(--border-color) !important;
+      border: 1px solid #00D4FF !important;
       border-radius: 10px !important;
+      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
       transition: background-color 5000s ease-in-out 0s;
     }
 
     .form-input:-webkit-autofill:focus,
     input:-webkit-autofill:focus {
-      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
-      border-color: var(--accent-cyan) !important;
+      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.3) !important;
+      border-color: #00D4FF !important;
     }
 
     /* Password Reveal Button */
@@ -443,7 +449,7 @@
       transform: translateY(-50%);
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: #00D4FF;
       cursor: pointer;
       padding: 6px;
       display: flex;
@@ -455,7 +461,7 @@
     }
 
     .btn-toggle-pwd:hover {
-      color: #ffffff;
+      color: #33ddff;
       background: rgba(255, 255, 255, 0.06);
     }
 
@@ -464,15 +470,16 @@
       height: 18px;
     }
 
-    /* Submit Button */
+    /* Submit Button (Matches Image 1) */
     .btn-login {
       width: 100%;
-      background: linear-gradient(135deg, #00D4FF 0%, #0284c7 100%);
-      border: none;
-      border-radius: 10px;
-      color: #020b14;
-      font-size: 0.96rem;
-      font-weight: 700;
+      background: #00D4FF !important;
+      border: none !important;
+      border-radius: 10px !important;
+      color: #000000 !important;
+      font-size: 0.96rem !important;
+      font-weight: 700 !important;
+      font-family: inherit !important;
       padding: 14px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -481,13 +488,22 @@
       justify-content: center;
       gap: 10px;
       margin-top: 6px;
-      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.35);
     }
 
     .btn-login:hover:not(:disabled) {
-      opacity: 0.95;
+      background: #33ddff !important;
+      color: #000000 !important;
+      box-shadow: 0 6px 22px rgba(0, 212, 255, 0.5);
       transform: translateY(-1px);
-      box-shadow: 0 6px 22px rgba(0, 212, 255, 0.35);
+    }
+
+    .btn-login *,
+    .btn-login svg,
+    .btn-login span {
+      color: #000000 !important;
+      stroke: #000000 !important;
+      fill: #000000 !important;
     }
 
     .btn-login:active:not(:disabled) {

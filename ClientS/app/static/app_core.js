@@ -3,6 +3,7 @@ const wsUrl = `${wsProtocol}://${window.location.host}/ws/epc-live`;
 let scanActive = false;
 let scanContext = null; // 'masuk' or 'keluar'
 let scannedEpcs = new Set();
+let laundryScannedData = { masuk: new Map(), keluar: new Map() };
 let masterLinen = [];
 let settingScanActive = false;
 let settingScannedEpcs = new Set();
@@ -889,41 +890,117 @@ function processScannedEpc(epc) {
   }
   if (!scanActive || !scanContext) return;
 
-  if (scannedEpcs.has(epc)) return; // Deduplicate
-  scannedEpcs.add(epc);
+  const cleanEpc = String(epc || '').trim();
+  if (!cleanEpc) return;
 
-  const cekTbody = document.querySelector(`#${scanContext}-cek-table tbody`);
-  const mainTbody = document.querySelector(`#${scanContext}-main-table tbody`);
+  if (!laundryScannedData[scanContext]) {
+    laundryScannedData[scanContext] = new Map();
+  }
 
-  if (!cekTbody || !mainTbody) return;
+  const contextMap = laundryScannedData[scanContext];
+  if (contextMap.has(cleanEpc)) return; // Deduplicate
 
-  const count = scannedEpcs.size;
+  const now = new Date();
+  const pad = (n) => String(n).padStart(2, '0');
+  const waktuScan = `${pad(now.getHours())}.${pad(now.getMinutes())}.${pad(now.getSeconds())}`;
 
-  // If first item added, clear empty placeholder if any
-  const emptyRowMain = mainTbody.querySelector('.empty-table-box');
-  if (emptyRowMain) mainTbody.innerHTML = '';
-  const emptyRowCek = cekTbody.querySelector('.empty-table-box');
-  if (emptyRowCek) cekTbody.innerHTML = '';
+  const norm = normalizeEpc(cleanEpc);
+  const foundLinen = masterLinen.find(l => {
+    if (!l) return false;
+    const lNorm = normalizeEpc(l.epc);
+    const lRaw = String(l.epc || '').trim().toUpperCase();
+    return (lNorm && lNorm === norm) || lRaw === cleanEpc.toUpperCase();
+  });
 
-  cekTbody.insertAdjacentHTML('afterbegin', `<tr><td>${count}</td><td>${epc}</td></tr>`);
+  contextMap.set(cleanEpc, {
+    epc: cleanEpc,
+    waktuScan: waktuScan,
+    linenData: foundLinen || null,
+    isOwned: !!foundLinen
+  });
 
-  const linenData = masterLinen.find(l => l.epc === epc) || {
-    id: 'LN-' + String(count).padStart(5, '0'), kategori: 'Lainnya', nama_linen: 'Linen RFID', total_cuci: 1, lokasi: scanContext === 'masuk' ? 'R. Laundry' : 'Ruangan', status: 'Tercatat'
-  };
+  scannedEpcs.add(cleanEpc);
+  renderLaundryTables(scanContext);
+}
 
-  mainTbody.insertAdjacentHTML('afterbegin', `
+function renderLaundryTables(context) {
+  if (!context) return;
+  const mainTbody = document.querySelector(`#${context}-main-table tbody`);
+  const cekTbody = document.querySelector(`#${context}-cek-table tbody`);
+  if (!mainTbody || !cekTbody) return;
+
+  const contextMap = laundryScannedData[context];
+  const items = contextMap ? Array.from(contextMap.values()) : [];
+
+  if (items.length === 0) {
+    cekTbody.innerHTML = '';
+    renderEmptyTable(context);
+    return;
+  }
+
+  // Compact sidebar table
+  cekTbody.innerHTML = items.map((item, idx) => `
     <tr>
-      <td>${count}</td>
-      <td>${linenData.id}</td>
-      <td>${epc}</td>
-      <td>${formatCategoryBadge(linenData.kategori)}</td>
-      <td>${linenData.nama_linen}</td>
-      <td>${linenData.total_cuci}</td>
-      <td>${linenData.lokasi}</td>
-      <td><span class="badge-connected"><span class="led-dot"></span>Tercatat</span></td>
-      <td>-</td>
+      <td style="text-align: center; color: #8297b0;">${idx + 1}</td>
+      <td style="font-family: monospace; font-weight: 500; color: ${item.isOwned ? '#ffffff' : '#ef4444'};">${item.epc}</td>
     </tr>
-  `);
+  `).join('');
+
+  // Main table
+  mainTbody.innerHTML = items.map((item, idx) => {
+    const isOwned = item.isOwned;
+    const l = item.linenData;
+
+    const kategoriHtml = isOwned && l && l.kategori
+      ? formatCategoryBadge(l.kategori)
+      : '<span style="color: #64748b;">-</span>';
+
+    const namaLinenHtml = isOwned && l && l.nama_linen
+      ? `<span style="font-weight: 600; color: #ffffff;">${l.nama_linen}</span>`
+      : `<span style="color: #ef4444; font-weight: 600;">(Bukan Milik RS)</span>`;
+
+    const totalCuciHtml = isOwned && l && (l.total_cuci !== undefined || l.jumlah_cuci !== undefined)
+      ? (l.total_cuci ?? l.jumlah_cuci ?? 0)
+      : '-';
+
+    const lokasiHtml = isOwned && l && l.lokasi
+      ? `<span style="color: #8297b0;">${l.lokasi}</span>`
+      : '<span style="color: #64748b;">-</span>';
+
+    const statusKepemilikanHtml = isOwned
+      ? '<span style="background: rgba(0, 208, 132, 0.15); color: #00D084; border: 1px solid rgba(0, 208, 132, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">Terdaftar di RS</span>'
+      : '<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">Tag Tidak Dikenal</span>';
+
+    const aksiHtml = `
+      <button type="button" class="btn-remove-laundry-item" onclick="removeLaundryScannedItem('${item.epc}', '${context}')" title="Hapus dari daftar scan">
+        ✕
+      </button>
+    `;
+
+    return `
+      <tr>
+        <td style="text-align: center; color: #8297b0;">${idx + 1}</td>
+        <td style="font-family: monospace; color: #8297b0; font-size: 0.85rem;">${item.waktuScan}</td>
+        <td style="font-family: monospace; font-weight: 600; color: #ffffff;">${item.epc}</td>
+        <td>${kategoriHtml}</td>
+        <td>${namaLinenHtml}</td>
+        <td style="text-align: center; color: ${isOwned ? '#ffffff' : '#64748b'};">${totalCuciHtml}</td>
+        <td>${lokasiHtml}</td>
+        <td>${statusKepemilikanHtml}</td>
+        <td style="text-align: center;">${aksiHtml}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+window.removeLaundryScannedItem = function(epc, context) {
+  if (!context || !laundryScannedData[context]) return;
+  laundryScannedData[context].delete(epc);
+  if (scanContext === context) {
+    scannedEpcs.delete(epc);
+  }
+  renderLaundryTables(context);
+};
 }
 
 function normalizeEpc(epc) {
@@ -1536,9 +1613,15 @@ function setupLaundryTabs() {
       document.getElementById(target).style.display = 'block';
 
       // Update scanContext implicitly
-      if (target === 'tab-masuk') scanContext = 'masuk';
-      else if (target === 'tab-keluar') scanContext = 'keluar';
-      else scanContext = null;
+      if (target === 'tab-masuk') {
+        scanContext = 'masuk';
+        scannedEpcs = new Set(laundryScannedData.masuk ? laundryScannedData.masuk.keys() : []);
+      } else if (target === 'tab-keluar') {
+        scanContext = 'keluar';
+        scannedEpcs = new Set(laundryScannedData.keluar ? laundryScannedData.keluar.keys() : []);
+      } else {
+        scanContext = null;
+      }
 
       setScanState(false); // Stop scanning when switching tabs
     });
@@ -1549,6 +1632,9 @@ function setupLaundryTabs() {
   if (activeTab) {
     const target = activeTab.getAttribute('data-target');
     scanContext = target === 'tab-masuk' ? 'masuk' : (target === 'tab-keluar' ? 'keluar' : null);
+    if (scanContext && laundryScannedData[scanContext]) {
+      scannedEpcs = new Set(laundryScannedData[scanContext].keys());
+    }
   }
 
   // Bind Scan buttons
@@ -1562,9 +1648,11 @@ function setupLaundryTabs() {
   }));
   document.querySelectorAll('.btn-reset-table').forEach(btn => btn.addEventListener('click', () => {
     if (scanContext) {
-      document.querySelector(`#${scanContext}-cek-table tbody`).innerHTML = '';
-      renderEmptyTable(scanContext);
+      if (laundryScannedData[scanContext]) {
+        laundryScannedData[scanContext].clear();
+      }
       scannedEpcs.clear();
+      renderLaundryTables(scanContext);
     }
   }));
 
@@ -1598,8 +1686,18 @@ function setupLaundryTabs() {
 
 async function handleTransaksiSubmit(event, jenis) {
   event.preventDefault();
-  if (scannedEpcs.size === 0) {
+  const contextMap = laundryScannedData[jenis] || new Map();
+  const allItems = Array.from(contextMap.values());
+
+  if (allItems.length === 0 && scannedEpcs.size === 0) {
     notify('Scan linen terlebih dahulu sebelum memproses.', 'warning');
+    return;
+  }
+
+  // Filter only owned / valid linen for transaction recording
+  const validOwnedItems = allItems.filter(i => i.isOwned);
+  if (validOwnedItems.length === 0) {
+    notify('Tidak ada linen terdaftar di RS yang dapat diproses.', 'warning');
     return;
   }
 
@@ -1613,15 +1711,19 @@ async function handleTransaksiSubmit(event, jenis) {
         jenis_transaksi: jenis,
         petugas: payload.petugas,
         ruangan: payload.ruangan,
-        epc_list: Array.from(scannedEpcs),
+        epc_list: validOwnedItems.map(i => i.epc),
         catatan: `Transaksi ${jenis} via form UI`
       })
     });
-    notify('Transaksi berhasil disimpan.', 'success');
+    notify(`Transaksi berhasil disimpan (${validOwnedItems.length} linen).`, 'success');
     form.reset();
-    scannedEpcs.clear();
-    document.querySelector(`#${jenis}-cek-table tbody`).innerHTML = '';
-    renderEmptyTable(jenis);
+    if (laundryScannedData[jenis]) {
+      laundryScannedData[jenis].clear();
+    }
+    if (scanContext === jenis) {
+      scannedEpcs.clear();
+    }
+    renderLaundryTables(jenis);
     scanActive = false;
     loadHistory(); // Refresh history
   } catch (err) {

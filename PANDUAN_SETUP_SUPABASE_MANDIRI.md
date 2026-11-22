@@ -218,3 +218,4 @@ Seluruh 14 test suite integrasi harus berstatus **PASSED**:
 | **Edge Function `500 Internal Error`** | Variabel rahasia `SUPABASE_SERVICE_ROLE_KEY` belum terpasang otomatis di Edge Function | Buka Project Settings > Edge Functions > tambahkan secret `SUPABASE_SERVICE_ROLE_KEY` sesuai project key Anda. |
 | **RS Lain Bisa Ambil Paket?** | Tenant ID belum terisolasi | Pastikan script migrasi nomor `11_get_package_by_verification_code.sql` sudah dijalankan di Supabase. |
 | **Internet RS Terputus** | Koneksi ISP offline | **Tidak ada masalah.** Aplikasi `ClientS` tetap berjalan 100% menggunakan SQLite lokal. Data akan otomatis disinkronkan saat koneksi internet kembali pulih. |
+

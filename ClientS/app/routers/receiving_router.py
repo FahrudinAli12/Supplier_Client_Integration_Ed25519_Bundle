@@ -426,6 +426,7 @@ class ProcessPackageRequest(BaseModel):
     operation_id: Optional[str] = None
     ruangan_tujuan: Optional[str] = Field(default=None, min_length=1, max_length=100)
     nama_petugas: Optional[str] = Field(default=None, max_length=100)
+    scanned_epcs: Optional[list[str]] = None
 
 
 # =============================================================================
@@ -1287,6 +1288,32 @@ async def process_package_receiving_endpoint(
                     target_scan_sess = s
                     break
 
+    # Jika session belum ada di memory namun client mengirim scanned_epcs
+    if not target_scan_sess and req.scanned_epcs:
+        op_id = req.operation_id or f"OP-{uuid.uuid4().hex[:12].upper()}"
+        target_scan_sess = RFIDScanSession(
+            operation_id=op_id,
+            paket_id=int(req.paket_id),
+            reader_name=rfid_manager.incoming_reader.name,
+            port=rfid_manager.incoming_reader.port,
+        )
+        rfid_manager.register_scan_session(target_scan_sess)
+
+    # Sinkronkan EPC dari req.scanned_epcs jika ada
+    if target_scan_sess and req.scanned_epcs:
+        if target_scan_sess.is_frozen:
+            with target_scan_sess._lock:
+                target_scan_sess.is_frozen = False
+        for epc_val in req.scanned_epcs:
+            try:
+                target_scan_sess.add_epc(epc_val)
+            except Exception:
+                pass
+
+    # Otomatis bekukan jika belum dibekukan oleh user/frontend
+    if target_scan_sess and not target_scan_sess.is_frozen:
+        target_scan_sess.freeze_snapshot()
+
     if not target_scan_sess or not target_scan_sess.is_frozen or not target_scan_sess.snapshot_epcs:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -1301,7 +1328,7 @@ async def process_package_receiving_endpoint(
             verification_code=req.verification_code,
             manifest_items=manifest_items,
             scan_session=target_scan_sess,
-            operation_id=req.operation_id,
+            operation_id=req.operation_id or target_scan_sess.operation_id,
             ruangan_tujuan=ruangan_clean,
             nama_petugas=req.nama_petugas,
         )

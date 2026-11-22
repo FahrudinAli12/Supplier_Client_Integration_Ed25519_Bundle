@@ -19,7 +19,7 @@
   <title>Settings - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=96" />
+  <link rel="stylesheet" href="/static/styles.css?v=97" />
   <style>
     .badge {
       display: inline-flex;
@@ -1219,7 +1219,7 @@
 
 
 
-  <script src="/static/app_core.js?v=96"></script>
+  <script src="/static/app_core.js?v=97"></script>
   <script>
     let activeOperationId = null;
     let activeManifestItems = [];
@@ -1691,6 +1691,14 @@
 
       if (isScanning) {
         await stopScan();
+      } else if (activeOperationId) {
+        try {
+          await fetch("/api/receiving/scan/stop", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-ClientS-Request": "1" },
+            body: JSON.stringify({ paket_id: parseInt(paketId), operation_id: activeOperationId })
+          });
+        } catch (_) { }
       }
 
       const btn = document.getElementById("btn-simpan-data");
@@ -1709,7 +1717,8 @@
             verification_code: verifCode,
             operation_id: activeOperationId,
             ruangan_tujuan: ruangan,
-            nama_petugas: namaPetugas
+            nama_petugas: namaPetugas,
+            scanned_epcs: scannedEpcsList
           })
         });
 

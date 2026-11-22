@@ -1189,7 +1189,7 @@ function setupSettings() {
     });
   }
 
-  const saveBtn = document.getElementById('btn-simpan-cek-linen') || document.getElementById('btn-simpan-data');
+  const saveBtn = document.getElementById('btn-simpan-cek-linen');
   if (saveBtn) {
     saveBtn.addEventListener('click', async event => {
       if (settingSaving) return;

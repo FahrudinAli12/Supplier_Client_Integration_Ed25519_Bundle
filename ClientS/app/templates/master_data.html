@@ -16,7 +16,7 @@
   <title>Master Data - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=89" />
+  <link rel="stylesheet" href="/static/styles.css?v=90" />
 
 
 </head>
@@ -891,8 +891,8 @@
                 <div class="card-search-box" style="position:relative; width: 250px;">
 
 
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" style="position:absolute; left:12px; top:50%; transform:translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                  <input id="ruangan-search" placeholder="Cari ruangan..." style="width:100%; background:#07172b; border:1px solid #00D4FF; border-radius:10px; padding:10px 14px 10px 36px; color:#fff; font-size:0.88rem; outline:none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" />
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8297b0" stroke-width="2" style="position:absolute; left:12px; top:50%; transform:translateY(-50%);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <input id="ruangan-search" placeholder="Cari ruangan..." style="width:100%; background:#07172b; border:1px solid #173554; border-radius:10px; padding:10px 14px 10px 36px; color:#fff; font-size:0.88rem; outline:none; transition: all 0.2s ease;" />
                 </div>
                 <button type="button" id="btn-tambah-ruangan" style="background: #00D4FF; color: #000000; border: none; border-radius: 10px; padding: 0 18px; height: 36px; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 212, 255, 0.35);">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -1041,22 +1041,22 @@
                   <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; color: #8297b0;">Kode Ruangan</label>
 
 
-                  <input id="kode_ruangan" name="kode_ruangan" required style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" placeholder="Contoh: R-IGD-01" />
+                  <input id="kode_ruangan" name="kode_ruangan" required style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; transition: all 0.2s ease;" placeholder="Contoh: R-IGD-01" />
                 </div>
 
                 <div style="margin-bottom: 16px;">
                   <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; color: #8297b0;">Nama Ruangan</label>
-                  <input id="nama_ruangan" name="nama_ruangan" required style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" placeholder="Contoh: IGD Utama" />
+                  <input id="nama_ruangan" name="nama_ruangan" required style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; transition: all 0.2s ease;" placeholder="Contoh: IGD Utama" />
                 </div>
 
                 <div style="margin-bottom: 16px;">
                   <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; color: #8297b0;">Keterangan</label>
-                  <input id="keterangan" name="keterangan" style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);" placeholder="Opsional" />
+                  <input id="keterangan" name="keterangan" style="width: 100%; box-sizing: border-box; background: #07172b; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; transition: all 0.2s ease;" placeholder="Opsional" />
                 </div>
 
                 <div style="margin-bottom: 24px;">
                   <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; color: #8297b0;">Status Ruangan</label>
-                  <select id="ruangan_is_active" name="is_active" style="width: 100%; box-sizing: border-box; background: #061426; border: 1px solid #00D4FF; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; cursor: pointer; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35);">
+                  <select id="ruangan_is_active" name="is_active" style="width: 100%; box-sizing: border-box; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.9rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
                     <option value="true">Aktif (Tampil di pemilihan transaksi)</option>
                     <option value="false">Nonaktif (Disembunyikan dari transaksi)</option>
                   </select>

@@ -19,7 +19,7 @@
   <title>Settings - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=89" />
+  <link rel="stylesheet" href="/static/styles.css?v=90" />
   <style>
     .badge {
       display: inline-flex;
@@ -632,7 +632,7 @@
               width: 100% !important;
               background-color: #07172b !important;
               color: #ffffff !important;
-              border: 1px solid #00D4FF !important;
+              border: 1px solid var(--border-color, #173554) !important;
               border-radius: 10px !important;
               padding: 12px 16px !important;
               font-family: inherit !important;
@@ -640,12 +640,12 @@
               font-size: 0.92rem !important;
               outline: none !important;
               box-sizing: border-box !important;
-              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+              box-shadow: none !important;
               transition: all 0.2s ease !important;
             }
             .sync-form-input:focus {
               border-color: #00D4FF !important;
-              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
+              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
               background-color: #07172b !important;
             }
             .sync-form-input::placeholder {
@@ -655,7 +655,7 @@
               width: 100% !important;
               background-color: #061426 !important;
               color: #ffffff !important;
-              border: 1px solid #00D4FF !important;
+              border: 1px solid var(--border-color, #173554) !important;
               border-radius: 10px !important;
               padding: 12px 16px !important;
               font-family: inherit !important;
@@ -664,12 +664,12 @@
               outline: none !important;
               cursor: pointer !important;
               box-sizing: border-box !important;
-              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+              box-shadow: none !important;
               transition: all 0.2s ease !important;
             }
             .sync-form-select:focus {
               border-color: #00D4FF !important;
-              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
+              box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
               background-color: #07172b !important;
             }
             .sync-form-select option {
@@ -870,7 +870,7 @@
                 <div style="font-size: 0.8rem; color: #00D4FF; font-weight: 600; margin-bottom: 8px;">Simulasi Input EPC Manual (Pengujian Tanpa Scanner Fisik)</div>
                 <div style="display: flex; gap: 10px;">
                   <input type="text" id="input-manual-epc" placeholder="Masukkan 24 Hex EPC..."
-                    style="flex: 1; background: #07172b; border: 1px solid #00D4FF; color: #ffffff; padding: 10px 14px; border-radius: 10px; font-family: monospace; font-size: 0.85rem; box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35); outline: none;" />
+                    style="flex: 1; background: #07172b; border: 1px solid #173554; color: #ffffff; padding: 10px 14px; border-radius: 10px; font-family: monospace; font-size: 0.85rem; outline: none; transition: all 0.2s ease;" />
                   <button id="btn-manual-add-epc" type="button" class="btn btn-secondary" onclick="manualAddEpc()"
                     style="padding: 8px 16px; font-size: 0.8rem;">
                     + Tambah EPC

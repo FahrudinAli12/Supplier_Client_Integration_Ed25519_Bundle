@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#020b14" />
   <meta name="color-scheme" content="dark" />
   <title>Login - Client Checking & Laundry Linen RS</title>
-  <link rel="stylesheet" href="/static/styles.css?v=89" />
+  <link rel="stylesheet" href="/static/styles.css?v=90" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -381,13 +381,13 @@
     .form-input {
       width: 100% !important;
       background: #07172b !important;
-      border: 1px solid #00D4FF !important;
+      border: 1px solid var(--border-color, #173554) !important;
       border-radius: 10px !important;
       padding: 13px 16px 13px 44px !important;
       font-size: 0.92rem !important;
       color: #ffffff !important;
       outline: none !important;
-      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+      box-shadow: none !important;
       transition: all 0.2s ease !important;
       font-family: inherit !important;
       line-height: 1.5 !important;
@@ -406,12 +406,13 @@
 
     .form-input:focus {
       border-color: #00D4FF !important;
-      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
+      box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
       background: #07172b !important;
     }
 
     .input-icon-left {
-      color: #00D4FF !important;
+      color: #8297b0 !important;
+      transition: color 0.2s ease !important;
     }
 
     .form-input:focus + .input-icon-left,
@@ -422,26 +423,22 @@
     /* Chrome/Edge/Firefox Dark Mode Autofill Override */
     .form-input:-webkit-autofill,
     .form-input:-webkit-autofill:hover,
-    .form-input:-webkit-autofill:focus,
     .form-input:-webkit-autofill:active,
     .form-input:autofill,
     .form-input:autofill:hover,
-    .form-input:autofill:focus,
     .form-input:autofill:active,
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
     input:-webkit-autofill:active,
     input:autofill,
     input:autofill:hover,
-    input:autofill:focus,
     input:autofill:active {
-      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
-      box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+      -webkit-box-shadow: 0 0 0 1000px #07172b inset !important;
+      box-shadow: 0 0 0 1000px #07172b inset !important;
       -webkit-text-fill-color: #ffffff !important;
       color: #ffffff !important;
       caret-color: #ffffff !important;
-      border: 1px solid #00D4FF !important;
+      border: 1px solid var(--border-color, #173554) !important;
       border-radius: 10px !important;
       color-scheme: dark !important;
       transition: background-color 5000000s ease-in-out 0s, color 5000000s ease-in-out 0s !important;
@@ -451,8 +448,8 @@
     .form-input:autofill:focus,
     input:-webkit-autofill:focus,
     input:autofill:focus {
-      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
-      box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
+      -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+      box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
       border-color: #00D4FF !important;
     }
 

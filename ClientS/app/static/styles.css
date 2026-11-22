@@ -4,6 +4,7 @@
    ========================================================================== */
 
 :root {
+  color-scheme: dark;
   --bg-dark: #020b14;
   --bg-sidebar: #061426;
   --bg-header: #061426;
@@ -933,18 +934,26 @@ select option {
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #07172b inset !important;
+input:-webkit-autofill:active,
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
+  box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
   -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
   caret-color: #ffffff !important;
   border: 1px solid #00D4FF !important;
   border-radius: 10px !important;
-  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.25), 0 0 10px rgba(0, 212, 255, 0.35) !important;
-  transition: background-color 5000s ease-in-out 0s;
+  color-scheme: dark !important;
+  transition: background-color 5000000s ease-in-out 0s, color 5000000s ease-in-out 0s !important;
 }
 
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 3px rgba(0, 212, 255, 0.3) !important;
+input:-webkit-autofill:focus,
+input:autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
+  box-shadow: 0 0 0 1000px #07172b inset, 0 0 0 2px rgba(0, 212, 255, 0.35), 0 0 14px rgba(0, 212, 255, 0.5) !important;
   border-color: #00D4FF !important;
 }
 

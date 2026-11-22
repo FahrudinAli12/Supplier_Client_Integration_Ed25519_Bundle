@@ -1001,7 +1001,6 @@ window.removeLaundryScannedItem = function(epc, context) {
   }
   renderLaundryTables(context);
 };
-}
 
 function normalizeEpc(epc) {
   if (!epc) return '';

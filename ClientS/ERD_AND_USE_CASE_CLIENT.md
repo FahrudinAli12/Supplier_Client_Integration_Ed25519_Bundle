@@ -251,3 +251,4 @@ flowchart LR
 | **UC-11** | **Audit Riwayat Transaksi** | Petugas Laundry, Admin | Menampilkan log harian linen masuk dan keluar, beserta rincian nomor EPC dan riwayat jumlah cuci setiap helai linen per transaksi. |
 | **UC-12** | **Audit Log Penerimaan Supplier** | Administrator RS | Meninjau arsip riwayat paket kiriman supplier yang pernah diterima beserta manifest itemnya. |
 | **UC-13** | **Sinkronisasi Antrean Offline** | Background Worker, Cloud Supabase | Saat internet terputus (*offline*), seluruh transaksi disimpan di tabel lokal `pengiriman_temp`. Begitu internet online kembali, sistem otomatis mengirimkan data ke tabel cloud `sync_events`. |
+

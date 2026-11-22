@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#020b14" />
   <title>Login - Client Checking & Laundry Linen RS</title>
-  <link rel="stylesheet" href="/static/styles.css?v=85" />
+  <link rel="stylesheet" href="/static/styles.css?v=86" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -364,34 +364,47 @@
     .input-icon-left {
       position: absolute;
       left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
       width: 18px;
       height: 18px;
       color: var(--text-muted);
       pointer-events: none;
       transition: color 0.2s;
+      z-index: 3;
     }
 
+    .form-group .form-input,
+    .input-wrapper .form-input,
     .form-input {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 13px 14px 13px 42px;
-      font-size: 0.92rem;
-      color: #ffffff;
-      outline: none;
-      transition: all 0.2s ease;
-      font-family: inherit;
+      width: 100% !important;
+      background: var(--bg-input) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 10px !important;
+      padding: 13px 16px 13px 44px !important;
+      font-size: 0.92rem !important;
+      color: #ffffff !important;
+      outline: none !important;
+      transition: all 0.2s ease !important;
+      font-family: inherit !important;
+      line-height: 1.5 !important;
+      height: 48px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-group .form-input#login-password,
+    .input-wrapper .form-input#login-password {
+      padding-right: 46px !important;
     }
 
     .form-input::placeholder {
-      color: #475569;
+      color: #475569 !important;
     }
 
     .form-input:focus {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18);
-      background: #07172b;
+      border-color: var(--accent-cyan) !important;
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18) !important;
+      background: #07172b !important;
     }
 
     .form-input:focus + .input-icon-left,
@@ -403,6 +416,8 @@
     .btn-toggle-pwd {
       position: absolute;
       right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -413,6 +428,7 @@
       justify-content: center;
       border-radius: 6px;
       transition: color 0.2s, background-color 0.2s;
+      z-index: 3;
     }
 
     .btn-toggle-pwd:hover {
@@ -662,6 +678,7 @@
                 type="email"
                 id="login-email"
                 class="form-input"
+                style="padding-left: 44px !important;"
                 placeholder="nama.petugas@rumahsakit.id"
                 autocomplete="username"
                 required
@@ -683,6 +700,7 @@
                 type="password"
                 id="login-password"
                 class="form-input"
+                style="padding-left: 44px !important; padding-right: 46px !important;"
                 placeholder="Masukkan kata sandi akun"
                 autocomplete="current-password"
                 required

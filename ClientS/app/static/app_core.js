@@ -323,7 +323,7 @@ window.alert = function(msg) {
   notify(cleanMsg, kind, kind === 'error' ? 6500 : 4500);
 };
 
-function showConfirm(message) {
+function showConfirm(message, approveText = 'Lanjutkan', cancelText = 'Batal') {
   return new Promise(resolve => {
     const overlay = document.createElement('div');
     overlay.className = 'app-confirmation-overlay';
@@ -334,13 +334,15 @@ function showConfirm(message) {
     const actions = document.createElement('div');
     actions.className = 'app-confirmation-actions';
     const cancel = document.createElement('button');
-    cancel.className = 'secondary'; cancel.textContent = 'Batal';
+    cancel.className = 'secondary';
+    cancel.textContent = cancelText;
     const approve = document.createElement('button');
-    approve.textContent = 'Lanjutkan';
+    approve.textContent = approveText;
     const finish = value => { overlay.remove(); resolve(value); };
     cancel.addEventListener('click', () => finish(false));
     approve.addEventListener('click', () => finish(true));
-    actions.append(cancel, approve); item.append(text, actions);
+    actions.append(cancel, approve);
+    item.append(text, actions);
     overlay.appendChild(item);
     document.body.appendChild(overlay);
   });
@@ -2756,7 +2758,8 @@ function initHeaderWidgets() {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      if (!confirm('Apakah Anda yakin ingin keluar dari sistem?')) return;
+      const confirmed = await showConfirm('Apakah Anda yakin ingin keluar dari sistem?', 'Ya, Keluar', 'Batal');
+      if (!confirmed) return;
       try {
         await fetch('/api/auth/logout', {
           method: 'POST',

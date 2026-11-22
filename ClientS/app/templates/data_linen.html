@@ -25,7 +25,7 @@
   <title>Master Data - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=90" />
+  <link rel="stylesheet" href="/static/styles.css?v=91" />
 
 
 </head>
@@ -1247,9 +1247,13 @@
             <!-- 1. Kategori -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">KATEGORI LINEN</label>
-              <select id="filter-linen-kategori" style="width: 100%; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
-                <option value="">Semua Kategori</option>
-              </select>
+              <div class="custom-dropdown" id="dropdown-filter-linen-kategori" data-target="filter-linen-kategori" tabindex="0">
+                <div class="dropdown-selected">Semua Kategori</div>
+                <div class="dropdown-options" id="dropdown-filter-linen-kategori-options">
+                  <div class="dropdown-option selected" data-value="">Semua Kategori</div>
+                </div>
+              </div>
+              <input type="hidden" id="filter-linen-kategori" value="" />
             </div>
 
             <!-- 2. Nama Linen / EPC -->
@@ -1267,23 +1271,31 @@
             <!-- 3. Lokasi / Ruangan -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">LOKASI / RUANGAN</label>
-              <select id="filter-linen-lokasi" style="width: 100%; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
-                <option value="">Semua Lokasi</option>
-                <option value="Storage">Gudang / Storage</option>
-                <option value="R. Laundry">R. Laundry</option>
-              </select>
+              <div class="custom-dropdown" id="dropdown-filter-linen-lokasi" data-target="filter-linen-lokasi" tabindex="0">
+                <div class="dropdown-selected">Semua Lokasi</div>
+                <div class="dropdown-options" id="dropdown-filter-linen-lokasi-options">
+                  <div class="dropdown-option selected" data-value="">Semua Lokasi</div>
+                  <div class="dropdown-option" data-value="Storage">Gudang / Storage</div>
+                  <div class="dropdown-option" data-value="R. Laundry">R. Laundry</div>
+                </div>
+              </div>
+              <input type="hidden" id="filter-linen-lokasi" value="" />
             </div>
 
             <!-- 4. Jumlah Cuci / Siklus -->
             <div>
               <label style="display: block; font-size: 0.75rem; color: #8297b0; font-weight: 600; margin-bottom: 5px;">SIKLUS / JUMLAH CUCI</label>
-              <select id="filter-linen-cuci" style="width: 100%; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 10px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
-                <option value="">Semua Siklus Cuci</option>
-                <option value="0-14">Baru (&lt; 15x cuci)</option>
-                <option value="15-49">Normal (15 - 49x cuci)</option>
-                <option value="50-99">Tinggi / Waspada (50 - 99x cuci)</option>
-                <option value="100+">Kritis / Siap Afkir (&ge; 100x cuci)</option>
-              </select>
+              <div class="custom-dropdown" id="dropdown-filter-linen-cuci" data-target="filter-linen-cuci" tabindex="0">
+                <div class="dropdown-selected">Semua Siklus Cuci</div>
+                <div class="dropdown-options" id="dropdown-filter-linen-cuci-options">
+                  <div class="dropdown-option selected" data-value="">Semua Siklus Cuci</div>
+                  <div class="dropdown-option" data-value="0-14">Baru (&lt; 15x cuci)</div>
+                  <div class="dropdown-option" data-value="15-49">Normal (15 - 49x cuci)</div>
+                  <div class="dropdown-option" data-value="50-99">Tinggi / Waspada (50 - 99x cuci)</div>
+                  <div class="dropdown-option" data-value="100+">Kritis / Siap Afkir (&ge; 100x cuci)</div>
+                </div>
+              </div>
+              <input type="hidden" id="filter-linen-cuci" value="" />
             </div>
           </div>
         </div>
@@ -1467,14 +1479,18 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 14px;">
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Alasan Pemusnahan / Afkir <span style="color:#ef4444;">*</span></label>
-                  <select id="afkir-alasan" required style="width: 100%; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
-                    <option value="Rusak / Robek / Berlubang">Rusak / Robek / Berlubang</option>
-                    <option value="Noda Kimia / Infeksius Permanen">Noda Kimia / Infeksius Permanen</option>
-                    <option value="Lapuk / Habis Masa Pakai">Lapuk / Habis Masa Pakai</option>
-                    <option value="Terkontaminasi B3">Terkontaminasi B3</option>
-                    <option value="Hilang / Tidak Ditemukan">Hilang / Tidak Ditemukan</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                  <div class="custom-dropdown" id="dropdown-afkir-alasan" data-target="afkir-alasan" tabindex="0">
+                    <div class="dropdown-selected">Rusak / Robek / Berlubang</div>
+                    <div class="dropdown-options" id="dropdown-afkir-alasan-options">
+                      <div class="dropdown-option selected" data-value="Rusak / Robek / Berlubang">Rusak / Robek / Berlubang</div>
+                      <div class="dropdown-option" data-value="Noda Kimia / Infeksius Permanen">Noda Kimia / Infeksius Permanen</div>
+                      <div class="dropdown-option" data-value="Lapuk / Habis Masa Pakai">Lapuk / Habis Masa Pakai</div>
+                      <div class="dropdown-option" data-value="Terkontaminasi B3">Terkontaminasi B3</div>
+                      <div class="dropdown-option" data-value="Hilang / Tidak Ditemukan">Hilang / Tidak Ditemukan</div>
+                      <div class="dropdown-option" data-value="Lainnya">Lainnya</div>
+                    </div>
+                  </div>
+                  <input type="hidden" id="afkir-alasan" name="afkir-alasan" value="Rusak / Robek / Berlubang" required />
                 </div>
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Nama Petugas Eksekutor <span style="color:#ef4444;">*</span></label>
@@ -1482,10 +1498,14 @@
                 </div>
                 <div>
                   <label style="display: block; font-size: 0.8rem; color: #cbd5e1; font-weight: 600; margin-bottom: 6px;">Metode Tindakan</label>
-                  <select id="afkir-action" style="width: 100%; background: #061426; border: 1px solid #173554; border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 0.88rem; outline: none; cursor: pointer; transition: all 0.2s ease;">
-                    <option value="afkir">Tandai Status AFKIR (Disarankan: Kunci dari Transaksi & Audit Tersimpan)</option>
-                    <option value="delete">Hapus Permanen dari Database (Hard Delete)</option>
-                  </select>
+                  <div class="custom-dropdown" id="dropdown-afkir-action" data-target="afkir-action" tabindex="0">
+                    <div class="dropdown-selected">Tandai Status AFKIR (Disarankan: Kunci dari Transaksi &amp; Audit Tersimpan)</div>
+                    <div class="dropdown-options" id="dropdown-afkir-action-options">
+                      <div class="dropdown-option selected" data-value="afkir">Tandai Status AFKIR (Disarankan: Kunci dari Transaksi &amp; Audit Tersimpan)</div>
+                      <div class="dropdown-option" data-value="delete">Hapus Permanen dari Database (Hard Delete)</div>
+                    </div>
+                  </div>
+                  <input type="hidden" id="afkir-action" name="afkir-action" value="afkir" />
                 </div>
               </div>
 
@@ -1578,7 +1598,7 @@
     }
   </script>
 
-  <script src="/static/app_core.js?v=85"></script>
+  <script src="/static/app_core.js?v=92"></script>
 
 
 </body>

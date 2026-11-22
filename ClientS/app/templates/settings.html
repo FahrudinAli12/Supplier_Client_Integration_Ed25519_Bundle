@@ -19,7 +19,7 @@
   <title>Settings - Client Checking & Laundry Linen RS</title>
 
 
-  <link rel="stylesheet" href="/static/styles.css?v=90" />
+  <link rel="stylesheet" href="/static/styles.css?v=91" />
   <style>
     .badge {
       display: inline-flex;
@@ -789,8 +789,8 @@
               </div>
 
               <div style="margin-bottom: 14px;">
-                <label style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px;">Nama Petugas</label>
-                <input type="text" id="input-nama-petugas" class="sync-form-input" placeholder="Bagus" value="Bagus" />
+                <label style="color: #94a3b8; font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 6px;">Nama Petugas <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="input-nama-petugas" class="sync-form-input" placeholder="Nama Petugas" value="" />
               </div>
 
               <div style="margin-bottom: 18px;">
@@ -798,9 +798,13 @@
                   <span>Ruang Tujuan</span>
                   <span style="color: #00D4FF; font-size: 0.75rem;">(Master Aktif)</span>
                 </label>
-                <select id="select-ruangan-tujuan" class="sync-form-select">
-                  <option value="" disabled selected>Memuat master ruangan...</option>
-                </select>
+                <div class="custom-dropdown" id="dropdown-ruangan-tujuan" data-target="select-ruangan-tujuan" tabindex="0">
+                  <div class="dropdown-selected">Memuat master ruangan...</div>
+                  <div class="dropdown-options" id="dropdown-ruangan-tujuan-options">
+                    <div class="dropdown-option selected" data-value="">Memuat master ruangan...</div>
+                  </div>
+                </div>
+                <input type="hidden" id="select-ruangan-tujuan" name="ruangan_tujuan" value="" />
               </div>
 
               <button id="btn-get-data" type="button" class="btn" onclick="fetchPackageByVerificationCode()"
@@ -1214,7 +1218,7 @@
 
 
 
-  <script src="/static/app_core.js?v=80"></script>
+  <script src="/static/app_core.js?v=92"></script>
   <script>
     let activeOperationId = null;
     let activeManifestItems = [];
@@ -1227,7 +1231,10 @@
       const selectTujuan = document.getElementById("select-ruangan-tujuan");
       const selectFallback = document.getElementById("select-ruangan");
       const emptyAlert = document.getElementById("ruangan-empty-alert");
-      if (!selectTujuan && !selectFallback) return;
+      const ddTujuan = document.getElementById("dropdown-ruangan-tujuan");
+      const ddTujuanOpts = document.getElementById("dropdown-ruangan-tujuan-options");
+      const ddTujuanSelected = ddTujuan ? ddTujuan.querySelector(".dropdown-selected") : null;
+      if (!selectTujuan && !selectFallback && !ddTujuan) return;
 
       try {
         const res = await fetch("/api/master/ruangan?is_active=true", {
@@ -1238,26 +1245,40 @@
         const rooms = await res.json();
         if (!rooms || rooms.length === 0) {
           const emptyOpt = '<option value="" disabled selected>-- Tidak ada ruangan aktif --</option>';
-          if (selectTujuan) { selectTujuan.innerHTML = emptyOpt; selectTujuan.disabled = true; }
+          if (selectTujuan) { selectTujuan.value = ""; }
+          if (ddTujuanSelected) ddTujuanSelected.textContent = "-- Tidak ada ruangan aktif --";
+          if (ddTujuanOpts) ddTujuanOpts.innerHTML = '<div class="dropdown-option selected" data-value="">-- Tidak ada ruangan aktif --</div>';
           if (selectFallback) { selectFallback.innerHTML = emptyOpt; selectFallback.disabled = true; }
           if (emptyAlert) emptyAlert.style.display = "block";
           return;
         }
         if (emptyAlert) emptyAlert.style.display = "none";
-        const optionsHtml = rooms.map((r, idx) => `<option value="${r.nama_ruangan}" ${idx === 0 ? "selected" : ""}>${r.kode_ruangan} - ${r.nama_ruangan}</option>`).join("");
-        if (selectTujuan) {
-          selectTujuan.innerHTML = optionsHtml;
-          selectTujuan.disabled = false;
+
+        // Populate custom dropdown options & hidden input
+        if (ddTujuanOpts) {
+          ddTujuanOpts.innerHTML = rooms.map((r, idx) =>
+            `<div class="dropdown-option ${idx === 0 ? 'selected' : ''}" data-value="${r.nama_ruangan}">${r.kode_ruangan} - ${r.nama_ruangan}</div>`
+          ).join("");
         }
+        if (ddTujuanSelected && rooms.length > 0) {
+          ddTujuanSelected.textContent = `${rooms[0].kode_ruangan} - ${rooms[0].nama_ruangan}`;
+        }
+        if (selectTujuan && rooms.length > 0) {
+          selectTujuan.value = rooms[0].nama_ruangan;
+        }
+
+        const optionsHtml = rooms.map((r, idx) => `<option value="${r.nama_ruangan}" ${idx === 0 ? "selected" : ""}>${r.kode_ruangan} - ${r.nama_ruangan}</option>`).join("");
         if (selectFallback) {
           selectFallback.innerHTML = optionsHtml;
           selectFallback.disabled = false;
         }
       } catch (err) {
         console.error("Gagal memuat ruangan aktif:", err);
-        const errOpt = '<option value="" disabled selected>Error memuat ruangan</option>';
-        if (selectTujuan) selectTujuan.innerHTML = errOpt;
-        if (selectFallback) selectFallback.innerHTML = errOpt;
+        const errOpt = "Error memuat ruangan";
+        if (selectTujuan) selectTujuan.value = "";
+        if (ddTujuanSelected) ddTujuanSelected.textContent = errOpt;
+        if (ddTujuanOpts) ddTujuanOpts.innerHTML = `<div class="dropdown-option selected" data-value="">${errOpt}</div>`;
+        if (selectFallback) selectFallback.innerHTML = `<option value="" disabled selected>${errOpt}</option>`;
       }
     }
 
@@ -1649,6 +1670,11 @@
       const ruangan = selectRuangan ? selectRuangan.value : "";
       const namaPetugas = (document.getElementById("input-nama-petugas")?.value || "").trim();
 
+      if (!namaPetugas) {
+        notify("Nama Petugas wajib diisi terlebih dahulu.", "warning");
+        document.getElementById("input-nama-petugas")?.focus();
+        return;
+      }
       if (!verifCode) {
         notify("Masukkan Kode Verifikasi dari surat jalan fisik terlebih dahulu.", "warning");
         return;

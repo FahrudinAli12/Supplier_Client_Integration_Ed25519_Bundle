@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#020b14" />
   <meta name="color-scheme" content="dark" />
   <title>Login - Client Checking & Laundry Linen RS</title>
-  <link rel="stylesheet" href="/static/styles.css?v=90" />
+  <link rel="stylesheet" href="/static/styles.css?v=91" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
@@ -34,7 +36,8 @@
       padding: 0;
     }
 
-    body, html {
+    body,
+    html {
       height: 100%;
       min-height: 100vh;
       background-color: var(--bg-dark);
@@ -93,7 +96,7 @@
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid var(--border-cyan);
       border-radius: 24px;
-      box-shadow: 
+      box-shadow:
         0 24px 64px rgba(0, 0, 0, 0.7),
         0 0 50px rgba(0, 212, 255, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -144,8 +147,17 @@
     }
 
     @keyframes pulseGlow {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+      }
     }
 
     .brand-identity {
@@ -335,8 +347,15 @@
     }
 
     @keyframes alertSlide {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Input Controls */
@@ -415,7 +434,7 @@
       transition: color 0.2s ease !important;
     }
 
-    .form-input:focus + .input-icon-left,
+    .form-input:focus+.input-icon-left,
     .input-wrapper:focus-within .input-icon-left {
       color: #00D4FF !important;
     }
@@ -541,7 +560,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Form Footer */
@@ -585,9 +606,11 @@
         max-width: 460px;
         border-radius: 20px;
       }
+
       .brand-panel {
         display: none;
       }
+
       .form-panel {
         padding: 38px 28px;
       }
@@ -597,15 +620,18 @@
       .login-wrapper {
         padding: 16px 12px;
       }
+
       .form-panel {
         padding: 30px 20px;
       }
+
       .form-header h1 {
         font-size: 1.35rem;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Ambient Glow & Matrix Dots -->
   <div class="bg-mesh" aria-hidden="true"></div>
@@ -613,7 +639,7 @@
 
   <main class="login-wrapper">
     <div class="login-layout">
-      
+
       <!-- Panel Kiri: Identitas & Keunggulan Sistem -->
       <section class="brand-panel">
         <div class="brand-top">
@@ -627,7 +653,8 @@
           <div class="brand-identity">
             <div class="brand-logo-box">
               <svg class="brand-cross" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
+                <path
+                  d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
               </svg>
             </div>
             <div class="brand-titles">
@@ -637,7 +664,8 @@
           </div>
 
           <p class="brand-tagline">
-            Platform terpadu monitoring dan automasi sirkulasi linen rumah sakit berbasis identifikasi chip RFID UHF secara real-time dan akuntabel.
+            Platform terpadu monitoring dan automasi sirkulasi linen rumah sakit berbasis identifikasi chip RFID UHF
+            secara real-time dan akuntabel.
           </p>
 
           <!-- Core Feature Pillars -->
@@ -705,7 +733,8 @@
         <!-- Alert Error Box -->
         <div id="login-alert" class="alert-error" role="alert" aria-live="polite">
           <div class="alert-content">
-            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="12" y1="8" x2="12" y2="12"></line>
               <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -721,19 +750,13 @@
               <span>Email Akun Petugas</span>
             </label>
             <div class="input-wrapper">
-              <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <input
-                type="email"
-                id="login-email"
-                class="form-input"
-                style="padding-left: 44px !important;"
-                placeholder="nama.petugas@rumahsakit.id"
-                autocomplete="username"
-                required
-              />
+              <input type="email" id="login-email" class="form-input" style="padding-left: 44px !important;"
+                placeholder="nama.petugas@rumahsakit.id" autocomplete="username" required />
             </div>
           </div>
 
@@ -743,35 +766,28 @@
               <span>Kata Sandi</span>
             </label>
             <div class="input-wrapper">
-              <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
-              <input
-                type="password"
-                id="login-password"
-                class="form-input"
+              <input type="password" id="login-password" class="form-input"
                 style="padding-left: 44px !important; padding-right: 46px !important;"
-                placeholder="Masukkan kata sandi akun"
-                autocomplete="current-password"
-                required
-              />
-              <button
-                type="button"
-                id="btn-toggle-pwd"
-                class="btn-toggle-pwd"
-                onclick="togglePasswordVisibility()"
-                aria-label="Tampilkan kata sandi"
-                aria-pressed="false"
-              >
+                placeholder="Masukkan kata sandi akun" autocomplete="current-password" required />
+              <button type="button" id="btn-toggle-pwd" class="btn-toggle-pwd" onclick="togglePasswordVisibility()"
+                aria-label="Tampilkan kata sandi" aria-pressed="false">
                 <!-- Eye Icon (Default) -->
-                <svg id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
                 <!-- Eye-Off Icon (Hidden initially) -->
-                <svg id="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <svg id="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                  <path
+                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                  </path>
                   <line x1="1" y1="1" x2="23" y2="23"></line>
                 </svg>
               </button>
@@ -782,7 +798,8 @@
           <button type="submit" id="btn-submit-login" class="btn-login">
             <span class="spinner" id="btn-spinner" aria-hidden="true"></span>
             <span id="btn-text">Masuk ke Sistem</span>
-            <svg id="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg id="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -824,7 +841,7 @@
 
       const isPassword = pwdInput.type === "password";
       pwdInput.type = isPassword ? "text" : "password";
-      
+
       iconEye.style.display = isPassword ? "none" : "block";
       iconEyeOff.style.display = isPassword ? "block" : "none";
       btn.setAttribute("aria-label", isPassword ? "Sembunyikan kata sandi" : "Tampilkan kata sandi");
@@ -902,4 +919,5 @@
     }
   </script>
 </body>
+
 </html>

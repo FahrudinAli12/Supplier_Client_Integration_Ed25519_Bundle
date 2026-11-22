@@ -368,10 +368,22 @@ function initLinenFilterOptions(ruanganList) {
 
   // Extract unique categories from masterLinen
   const categories = Array.from(new Set(masterLinen.map(l => l.kategori).filter(Boolean))).sort();
-  selectKat.innerHTML = '<option value="">Semua Kategori</option>' +
-    categories.map(k => `<option value="${k}">${k}</option>`).join('');
-  if (currentKat && categories.includes(currentKat)) {
-    selectKat.value = currentKat;
+  
+  // Custom dropdown support for Kategori
+  const ddKatOpts = document.getElementById('dropdown-filter-linen-kategori-options');
+  const ddKatSelected = document.querySelector('#dropdown-filter-linen-kategori .dropdown-selected');
+  if (ddKatOpts) {
+    ddKatOpts.innerHTML = '<div class="dropdown-option ' + (!currentKat ? 'selected' : '') + '" data-value="">Semua Kategori</div>' +
+      categories.map(k => `<div class="dropdown-option ${currentKat === k ? 'selected' : ''}" data-value="${k}">${k}</div>`).join('');
+    if (ddKatSelected) {
+      ddKatSelected.textContent = (currentKat && categories.includes(currentKat)) ? currentKat : 'Semua Kategori';
+    }
+  } else if (selectKat.tagName === 'SELECT') {
+    selectKat.innerHTML = '<option value="">Semua Kategori</option>' +
+      categories.map(k => `<option value="${k}">${k}</option>`).join('');
+    if (currentKat && categories.includes(currentKat)) {
+      selectKat.value = currentKat;
+    }
   }
 
   // Extract unique rooms / locations
@@ -379,10 +391,21 @@ function initLinenFilterOptions(ruanganList) {
   const extraLocations = Array.from(new Set(masterLinen.map(l => l.lokasi).filter(Boolean)));
   const allLocations = Array.from(new Set(['Storage', 'R. Laundry', ...activeRooms, ...extraLocations])).sort();
 
-  selectLokasi.innerHTML = '<option value="">Semua Lokasi</option>' +
-    allLocations.map(loc => `<option value="${loc}">${loc}</option>`).join('');
-  if (currentLokasi && allLocations.includes(currentLokasi)) {
-    selectLokasi.value = currentLokasi;
+  // Custom dropdown support for Lokasi
+  const ddLokOpts = document.getElementById('dropdown-filter-linen-lokasi-options');
+  const ddLokSelected = document.querySelector('#dropdown-filter-linen-lokasi .dropdown-selected');
+  if (ddLokOpts) {
+    ddLokOpts.innerHTML = '<div class="dropdown-option ' + (!currentLokasi ? 'selected' : '') + '" data-value="">Semua Lokasi</div>' +
+      allLocations.map(loc => `<div class="dropdown-option ${currentLokasi === loc ? 'selected' : ''}" data-value="${loc}">${loc}</div>`).join('');
+    if (ddLokSelected) {
+      ddLokSelected.textContent = (currentLokasi && allLocations.includes(currentLokasi)) ? currentLokasi : 'Semua Lokasi';
+    }
+  } else if (selectLokasi.tagName === 'SELECT') {
+    selectLokasi.innerHTML = '<option value="">Semua Lokasi</option>' +
+      allLocations.map(loc => `<option value="${loc}">${loc}</option>`).join('');
+    if (currentLokasi && allLocations.includes(currentLokasi)) {
+      selectLokasi.value = currentLokasi;
+    }
   }
 
   if (!linenFilterInitialized) {
@@ -400,6 +423,22 @@ function initLinenFilterOptions(ruanganList) {
       if (elLok) elLok.value = '';
       const selectCuci = document.getElementById('filter-linen-cuci');
       if (selectCuci) selectCuci.value = '';
+
+      // Reset custom dropdowns UI
+      const resetCustomDD = (id, defaultLabel) => {
+        const dd = document.getElementById(id);
+        if (dd) {
+          const sel = dd.querySelector('.dropdown-selected');
+          if (sel) sel.textContent = defaultLabel;
+          dd.querySelectorAll('.dropdown-option').forEach(o => {
+            o.classList.toggle('selected', o.getAttribute('data-value') === '');
+          });
+        }
+      };
+      resetCustomDD('dropdown-filter-linen-kategori', 'Semua Kategori');
+      resetCustomDD('dropdown-filter-linen-lokasi', 'Semua Lokasi');
+      resetCustomDD('dropdown-filter-linen-cuci', 'Semua Siklus Cuci');
+
       applyLinenFilters();
     });
   }
@@ -1197,16 +1236,6 @@ function setupAfkirLinen() {
 
   if (!toggleBtn || !submitBtn) return;
 
-  // Auto-fill petugas from user avatar if available
-  if (petugasInput && !petugasInput.value) {
-    const avatar = document.querySelector('.user-avatar');
-    if (avatar && avatar.title && avatar.title !== 'Administrator') {
-      petugasInput.value = avatar.title;
-    } else {
-      petugasInput.value = 'Petugas Linen';
-    }
-  }
-
   toggleBtn.addEventListener('click', async () => {
     if (!afkirScanActive) {
       try {
@@ -1265,7 +1294,12 @@ function setupAfkirLinen() {
 
     const validEpcs = validItems.map(x => x.epc);
     const alasan = document.getElementById('afkir-alasan')?.value || 'Rusak / Robek / Berlubang';
-    const petugas = document.getElementById('afkir-petugas')?.value?.trim() || 'Petugas Linen';
+    const petugas = document.getElementById('afkir-petugas')?.value?.trim();
+    if (!petugas) {
+      notify('Nama Petugas Eksekutor wajib diisi terlebih dahulu.', 'warning');
+      document.getElementById('afkir-petugas')?.focus();
+      return;
+    }
     const action = document.getElementById('afkir-action')?.value || 'afkir';
     const catatan = document.getElementById('afkir-catatan')?.value?.trim() || '';
 
@@ -2154,16 +2188,37 @@ async function loadDashboardActivityHistory() {
         clickedDropdown.querySelectorAll('.dropdown-option').forEach(o => o.classList.remove('selected'));
         clickedOption.classList.add('selected');
 
-        // Find adjacent hidden input and update it
-        const hiddenInput = clickedDropdown.parentElement.querySelector('input[type="hidden"]');
+        // Find associated hidden input and update it
+        const targetId = clickedDropdown.getAttribute('data-target');
+        const hiddenInput = targetId
+          ? document.getElementById(targetId)
+          : clickedDropdown.parentElement.querySelector('input[type="hidden"]');
         if (hiddenInput) {
           hiddenInput.value = val;
-          hiddenInput.dispatchEvent(new Event('change'));
+          hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+          hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
         }
         clickedDropdown.classList.remove('open');
       } else {
+        // Close other dropdowns first
+        document.querySelectorAll('.custom-dropdown.open').forEach(dd => {
+          if (dd !== clickedDropdown) dd.classList.remove('open');
+        });
         clickedDropdown.classList.toggle('open');
       }
+    }
+  });
+
+  // Keyboard navigation for custom dropdowns
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const activeEl = document.activeElement;
+      if (activeEl && activeEl.classList.contains('custom-dropdown')) {
+        e.preventDefault();
+        activeEl.classList.toggle('open');
+      }
+    } else if (e.key === 'Escape') {
+      document.querySelectorAll('.custom-dropdown.open').forEach(dd => dd.classList.remove('open'));
     }
   });
 
